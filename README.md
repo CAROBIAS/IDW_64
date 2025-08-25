@@ -1,7 +1,7 @@
 # IDW64
 # Centro Médico — 1era Etapa (TFI Introducción al Desarrollo Web, UNER 2025)
 
-Aplicación web estática que define la estructura base del sitio:
+Aplicación web que define la estructura base del sitio:
 - Inicio / Portada
 - Información Institucional
 - Contacto
