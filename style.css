@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-font-arial: 'Arial', sans-serif;
+    --bg-color-white: #ffffff;
+    --bg-color-blue: #007BFF;
+    --bg-color-grey: #333;
+    --font-color-grey: #333;
+    --font-color-white: #ffffff;
+    --shadow--color-black: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: var(--main-font-arial);
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color-white);
+    color: var(--font-color-grey);
+}
+
+header {
+    background: var(--bg-color-blue);
+    color: var(--font-color-white);
+    padding: 20px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: var(--font-color-white);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.hero {
+    background: url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
+    color: var(--font-color-white);
+    padding: 60px 20px;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    margin: 20px 0;
+    padding: 20px;
+    background: var(--font-color-white);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px var(--shadow--color-black);
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: var(--bg-color-grey);
+    color: var(--font-color-white);
+}
