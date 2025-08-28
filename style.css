@@ -126,7 +126,7 @@ form button {
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
 form button:hover {
