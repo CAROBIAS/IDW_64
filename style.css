@@ -72,6 +72,7 @@ footer {
     color: var(--font-color-white);
 }
 
+
 /* Contacto */
 
 form {
@@ -132,3 +133,43 @@ form button {
 form button:hover {
     background: var(--hover-color-darkblue);
 }
+
+
+/*  aca esta lo de las tarjetas... para que tengas de referencia de lo que vimos en el meet   */
+
+
+.tarjetas{
+    background-color: var(--bg-color-grey);
+    border-radius: 15px;
+}
+
+.container{
+    background-color: var(--bg-color-blue);
+    margin-top: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    
+}
+
+.tarjeta{
+    background-color: var(--bg-color-white);
+    margin: 20px;
+    min-width: 500px;
+    display: flex;
+    gap: 50px;
+    padding: 0 50px;
+}
+
+
+.der{
+    padding: 50px;
+    text-align: center;
+}
+
+.nombre {
+    font-weight: bold;
+    font-size: xx-large;
+}
+
