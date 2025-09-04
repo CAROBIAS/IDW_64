@@ -86,6 +86,8 @@ footer {
     padding: 20px;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    
 }
 
 .tarjeta{
@@ -96,6 +98,7 @@ footer {
     gap: 50px;
     padding: 0 50px;
 }
+
 
 .der{
     padding: 50px;
