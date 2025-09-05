@@ -6,106 +6,255 @@
 
 :root {
     --main-font-arial: 'Arial', sans-serif;
-    --bg-color-white: #ffffff;
-    --bg-color-blue: #007BFF;
-    --bg-color-grey: #333;
+    --bg-color-white: #fdf8da;
+    --bg-color-lightgrey: #ecebe2;
+    --bg-color-lightblue: #00a2ff;
+    --bg-color-grey: #363636;
     --font-color-grey: #333;
     --font-color-white: #ffffff;
     --shadow--color-black: rgba(0, 0, 0, 0.1);
+    --hover-color-darkblue: #0056b3;
 }
 
-body {
-    font-family: var(--main-font-arial);
-    margin: 0;
-    padding: 0;
-    background-color: var(--bg-color-white);
-    color: var(--font-color-grey);
+.header-container{
+    background-image: url(https://www.cmpsalta.com.ar/assets/img/hero-bg.jpg);
+    min-height: 500px;
+    background-repeat: no-repeat;      
+    background-size: cover;
 }
 
-header {
-    background: var(--bg-color-blue);
-    color: var(--font-color-white);
-    padding: 20px 0;
-    text-align: center;
+.header-top-bar{
+    padding: 0 50px;
+    background-color: var(--bg-color-grey);
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
+.header-top-bar ul{
+    display: flex;
+    gap: 20px;
+    list-style-type: none;
 }
 
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-nav ul li a {
+.header-top-bar ul li a{
     color: var(--font-color-white);
     text-decoration: none;
+}
+
+.turnos button{
+    background-color: var(--bg-color-lightblue);
+    padding: 5px;
+    border-radius: 5px;
     font-weight: bold;
 }
 
-.hero {
-    background: url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
-    color: var(--font-color-white);
-    padding: 60px 20px;
-    text-align: center;
-}
-
-main {
-    padding: 20px;
-}
-
-section {
-    margin: 20px 0;
-    padding: 20px;
-    background: var(--font-color-white);
-    border-radius: 5px;
-    box-shadow: 0 2px 5px var(--shadow--color-black);
-}
-
-footer {
-    text-align: center;
-    padding: 10px 0;
-    background: var(--bg-color-grey);
+.turnos button a{
+    text-decoration: none;
     color: var(--font-color-white);
 }
 
-
-/*  aca esta lo de las tarjetas... para que tengas de referencia de lo que vimos en el meet   */
-
-
-.tarjetas{
-    background-color: var(--bg-color-grey);
-    border-radius: 15px;
+.header-middle{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 50px;
 }
 
-.container{
-    background-color: var(--bg-color-blue);
-    margin-top: 20px;
-    padding: 20px;
+.left{
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    
+    flex-direction: column;
+    gap: 20px;
 }
 
-.tarjeta{
-    background-color: var(--bg-color-white);
-    margin: 20px;
-    min-width: 500px;
-    display: flex;
-    gap: 50px;
-    padding: 0 50px;
+.logo img{
+    width: 40%;
 }
 
+.site-description{
+    text-transform: uppercase;
+    margin-top: 10px;
+}
 
-.der{
+.carousel {
+  width: 100%;
+  overflow: hidden;
+  background: var(--bg-color-grey);
+  padding: 10px 0;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 50px;
+  will-change: transform;
+}
+
+.carousel img {
+  width: 50px;
+  border-radius: 10px;
+}
+
+section{
     padding: 50px;
     text-align: center;
 }
 
-.nombre {
-    font-weight: bold;
+section h2{
+    text-decoration: underline;
+    text-transform: uppercase;
     font-size: xx-large;
+}
+
+
+.tarjetas-container{
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 50px;
+    
+}
+
+.tarjeta-box{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: var(--bg-color-lightgrey);
+    border-radius: 20px;
+}
+
+
+
+.tarjeta-img img{
+    border-radius: 100px;
+    object-fit: cover;
+}
+
+
+footer{
+    background-color: var(--bg-color-grey);
+    color: var(--font-color-white);
+}
+
+.footer-top-bar{
+    min-height: 30px;
+    padding: 10px;
+}
+
+.footer-top-bar ul{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    list-style-type: none;
+}
+
+.footer-top-bar ul li i{
+    color: var(--font-color-white);
+}
+
+
+.footer-middle{
+    padding: 0 50px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-items: center;
+}
+
+.footer-middle-right ul{
+    list-style-type: none;
+}
+
+.footer-middle-right ul li{
+    margin: 10px 0;
+}
+
+.footer-bottom-bar{
+    text-align: center;
+    padding: 5px;
+}
+
+
+/*---------------------------------------------------------*/
+
+/* institucional */
+
+#nosotros p, #trayectoria p {
+    text-align: justify;
+    font-size: large;
+    margin-top: 40px;
+}
+
+#especialidades ul{
+    margin-top: 40px;
+    list-style-type: none;
+    text-align: justify;
+}
+
+
+#especialidades ul li{
+    margin: 10px 0;
+    font-size: large;
+}
+
+/* Contacto */
+
+form {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background: var(--bg-color-lightgrey);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px var(--shadow--color-black);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form h2 {
+    text-align: center;
+    color: var(--bg-color-blue);
+    margin-bottom: 10px;
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--font-color-grey);
+}
+
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: var(--main-font-arial);
+    font-size: 1rem;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+    border-color: var(--bg-color-lightblue);
+    outline: none;
+    box-shadow: 0 0 5px var(--shadow--color-black);
+}
+
+form button {
+    background: var(--bg-color-lightblue);
+    color: var(--font-color-white);
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background: var(--hover-color-darkblue);
 }
