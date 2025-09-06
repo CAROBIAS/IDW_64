@@ -11,6 +11,7 @@ Aplicación web que define la estructura base del sitio:
 - Carolina Delgado
 - Matias Enrique Sanchez De Bock
 - Juan Manuel Zornn
+- Luciano Latella
 
 
 ## Cómo ver el proyecto
