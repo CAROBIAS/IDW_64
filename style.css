@@ -18,7 +18,7 @@
 
 .header-container{
     background-image: url(https://www.cmpsalta.com.ar/assets/img/hero-bg.jpg);
-    min-height: 500px;
+    /* min-height: 500px; */
     background-repeat: no-repeat;      
     background-size: cover;
 }
@@ -58,7 +58,7 @@
 .header-middle{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    padding: 50px;
+    padding: 10px 50px;
 }
 
 .left{
