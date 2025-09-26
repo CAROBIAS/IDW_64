@@ -14,6 +14,8 @@
     --font-color-white: #ffffff;
     --shadow--color-black: rgba(0, 0, 0, 0.1);
     --hover-color-darkblue: #0056b3;
+    /* Custom Bootstrap */
+    --bs-light: var(--bg-color-lightgrey)
 }
 
 .header-container{
@@ -201,6 +203,10 @@ footer{
 /* Contacto */
 
 form {
+    background: var(--bs-light);
+}
+
+/* form {
     max-width: 600px;
     margin: 30px auto;
     padding: 20px;
@@ -257,4 +263,4 @@ form button {
 
 form button:hover {
     background: var(--hover-color-darkblue);
-}
+} */
