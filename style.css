@@ -124,7 +124,7 @@ form button:hover {
 
 
 .tarjetas{
-    background-color: var(--bg-color-grey);
+    background-color: var(--bg-color-lightgrey);
     border-radius: 15px;
 }
 .header-middle{
