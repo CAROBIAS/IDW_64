@@ -205,8 +205,8 @@ section h2{
 
 
 footer{
-    background-color: var(--bg-color-grey);
-    color: var(--font-color-white);
+    background-color: var(--bg-color-grey) !important;
+    color: var(--font-color-white) !important;
 }
 
 .footer-top-bar{
