@@ -18,129 +18,75 @@
 
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <!-- Top bar -->
-    <div class="bg-light py-2 border-bottom">
-      <div class="container d-flex justify-content-between align-items-center">
-        <div class="social-links">
-          <a href="https://www.facebook.com/" target="_blank" class="me-2"><i class="bx bxl-facebook"></i></a>
-          <a href="https://www.instagram.com/" target="_blank" class="me-2"><i class="bx bxl-instagram"></i></a>
-          <a href="https://www.linkedin.com/" target="_blank" class="me-2"><i class="bx bxl-linkedin"></i></a>
-          <a href="#"><i class="bx bxl-whatsapp"></i></a>
+  <header class="position-relative min-vh-50">
+
+    <img src="https://www.cmpsalta.com.ar/assets/img/hero-bg.jpg" alt="bg"
+      class="position-absolute top-0 start-0 w-100 h-100" style="object-fit: cover; z-index: -1;">
+
+    <div class="header-container">
+
+      <nav class="navbar navbar-expand-lg navbar-light ">
+        <div class="container-fluid">
+
+
+          <a class="navbar-brand" href="index.html"><img src="scr/logo idwsa.png" alt="logo" style="height:40px;"></a>
+
+          <button class="navbar-toggler fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation"><span
+              class="navbar-toggler-icon"></span></button>
+
+          <div class="collapse navbar-collapse" id="navbarContent">
+
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item"><a class="nav-link fw-semibold" href="index.html">HOME</a></li>
+              <li class="nav-item"><a class="nav-link fw-semibold" href="#">INSTITUCIONAL</a></li>
+              <li class="nav-item"><a class="nav-link fw-semibold" href="contacto.html">CONTACTO</a></li>
+            </ul>
+
+            <ul class="navbar-nav flex-row me-3">
+              <li class="nav-item me-2"><a class="nav-link" href="https://www.facebook.com/" target="_blank"><i
+                    class="bx bxl-facebook fw-bold"></i></a></li>
+              <li class="nav-item me-2"><a class="nav-link" href="https://www.instagram.com/" target="_blank"><i
+                    class="bx bxl-instagram fw-bold"></i></a></li>
+              <li class="nav-item me-2"><a class="nav-link" href="https://www.linkedin.com/" target="_blank"><i
+                    class="bx bxl-linkedin fw-bold"></i></a></li>
+              <li class="nav-item"><a class="nav-link" href="" target="_blank"><i
+                    class="bx bxl-whatsapp fw-bold"></i></a></li>
+            </ul>
+
+            <div class="d-flex me-3">
+              <a href="#" class="btn btn-primary">PIDA TURNO AQUI</a>
+            </div>
+          </div>
         </div>
-        <div>
-          <a href="#" class="btn btn-primary btn-sm">PIDA TURNO AQUÍ</a>
+      </nav>
+
+      <div class="header-middle text-center mt-5 py-3">
+        <div class="container d-flex flex-column flex-md-row align-items-center justify-content-center">
+          <div class="titulo text-center text-md-start">
+            <h1 class="h3 m-0 fw-bold">Centro Médico IDW64</h1>
+            <p class="site-description mb-0 fw-semibold">Demasiados años dedicados a la salud</p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-      <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="index.html">
-          <img src="scr/logo idwsa.png" alt="logo" width="50" class="me-2">
-          <span>Centro Médico IDW64</span>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="index.html">HOME</a></li>
-            <li class="nav-item"><a class="nav-link active" href="#">INSTITUCIONAL</a></li>
-            <li class="nav-item"><a class="nav-link" href="contacto.html">CONTACTO</a></li>
-          </ul>
+      <div class="header-bottom-bar">
+        <div class="carousel">
+          <div class="carousel-track">
+            <img src="https://www.cmbelgrano.com.ar/images/cobertura/osHA.jpg" alt="Imagen 1">
+            <img src="https://www.cmbelgrano.com.ar/images/cobertura/osOsde.jpg" alt="Imagen 2">
+            <img src="https://www.cmbelgrano.com.ar/images/cobertura/osOspatca.gif" alt="Imagen 3">
+            <img src="https://www.cmbelgrano.com.ar/images/cobertura/osSS.jpg" alt="Imagen 4">
+            <img src="https://www.cmbelgrano.com.ar/images/cobertura/osOsdipp.gif" alt="Imagen 5">
+            <img src="https://www.cmbelgrano.com.ar/images/cobertura/osComisarios.png" alt="Imagen 6">
+            <img src="https://www.cmbelgrano.com.ar/images/cobertura/osCobermed.png" alt="Imagen 7">
+            <img src="https://www.cmbelgrano.com.ar/images/cobertura/osDasuten.jpg" alt="Imagen 8">
+            <img src="https://www.cmbelgrano.com.ar/images/cobertura/osOmint.png" alt="Imagen 9">
+          </div>
         </div>
       </div>
-    </nav>
-        <!-- Carousel con varios logos por slide -->
-<div id="carouselLogos" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
 
-    <!-- Slide 1 -->
-    <div class="carousel-item active">
-      <div class="d-flex justify-content-center gap-3 flex-wrap">
-        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osHA.jpg" class="img-fluid"
-             style="max-width: 240px; height: auto;" alt="Logo 1">
-        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osOsde.jpg" class="img-fluid"
-             style="max-width: 240px; height: auto;" alt="Logo 2">
-        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osOspatca.gif" class="img-fluid"
-             style="max-width: 240px; height: auto;" alt="Logo 3">
-        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osSS.jpg" class="img-fluid"
-             style="max-width: 240px; height: auto;" alt="Logo 4">
-        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osOsdipp.gif" class="img-fluid"
-             style="max-width: 240px; height: auto;" alt="Logo 5">
-        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osComisarios.png" class="img-fluid"
-             style="max-width: 240px; height: auto;" alt="Logo 6">
-        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osCobermed.png" class="img-fluid"
-             style="max-width: 240px; height: auto;" alt="Logo 7">
-        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osDasuten.jpg" class="img-fluid"
-             style="max-width: 240px; height: auto;" alt="Logo 8">
-        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osOmint.png" class="img-fluid"
-             style="max-width: 240px; height: auto;" alt="Logo 9">          
-      </div>
     </div>
-
-    <!-- Slide 2 -->
-    <div class="carousel-item">
-      <div class="d-flex justify-content-center gap-3 flex-wrap">
-        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osHA.jpg" class="img-fluid"
-             style="max-width: 240px; height: auto;" alt="Logo 1">
-        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osOsde.jpg" class="img-fluid"
-             style="max-width: 240px; height: auto;" alt="Logo 2">
-        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osOspatca.gif" class="img-fluid"
-             style="max-width: 240px; height: auto;" alt="Logo 3">
-        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osSS.jpg" class="img-fluid"
-             style="max-width: 240px; height: auto;" alt="Logo 4">
-        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osOsdipp.gif" class="img-fluid"
-             style="max-width: 240px; height: auto;" alt="Logo 5">
-        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osComisarios.png" class="img-fluid"
-             style="max-width: 240px; height: auto;" alt="Logo 6">
-        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osCobermed.png" class="img-fluid"
-             style="max-width: 240px; height: auto;" alt="Logo 7">
-        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osDasuten.jpg" class="img-fluid"
-             style="max-width: 240px; height: auto;" alt="Logo 8">
-        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osOmint.png" class="img-fluid"
-             style="max-width: 240px; height: auto;" alt="Logo 9">
-      </div>
-    </div>
-
-    <!-- Slide 3 -->
-    <div class="carousel-item">
-      <div class="d-flex justify-content-center gap-3 flex-wrap">
-        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osHA.jpg" class="img-fluid"
-             style="max-width: 240px; height: auto;" alt="Logo 1">
-        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osOsde.jpg" class="img-fluid"
-             style="max-width: 240px; height: auto;" alt="Logo 2">
-        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osOspatca.gif" class="img-fluid"
-             style="max-width: 240px; height: auto;" alt="Logo 3">
-        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osSS.jpg" class="img-fluid"
-             style="max-width: 240px; height: auto;" alt="Logo 4">
-        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osOsdipp.gif" class="img-fluid"
-             style="max-width: 240px; height: auto;" alt="Logo 5">
-        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osComisarios.png" class="img-fluid"
-             style="max-width: 240px; height: auto;" alt="Logo 6">
-        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osCobermed.png" class="img-fluid"
-             style="max-width: 240px; height: auto;" alt="Logo 7">
-        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osDasuten.jpg" class="img-fluid"
-             style="max-width: 240px; height: auto;" alt="Logo 8">
-        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osOmint.png" class="img-fluid"
-             style="max-width: 240px; height: auto;" alt="Logo 9">
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Controles -->
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselLogos" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselLogos" data-bs-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </button>
-</div>
-
   </header>
 
   <!-- MAIN -->
@@ -149,12 +95,18 @@
     <section id="nosotros" class="container my-5">
       <h2 class="text-center mb-4">Nosotros</h2>
       <p class="lead text-justify">
-        En Centro Médico IDW64 creemos que la salud es un estado de completo bienestar físico, mental y emocional, y no solo la ausencia de enfermedad. 
-        Por eso, nos dedicamos a ofrecer atención médica de excelencia, con un enfoque humano y personalizado que te acompaña en cada etapa de tu vida. 
-        Contamos con un equipo de profesionales altamente capacitados y con amplia experiencia que se comprometen a escucharte, entender tus necesidades
-        y ofrecerte soluciones médicas integrales. La confianza que nuestros pacientes depositan en nosotros es la base de nuestro trabajo diario, y 
-        nos esforzamos por honrarla en cada consulta. Para garantizar la mejor atención, implementamos protocolos médicos actualizados y utilizamos tecnología
-        de vanguardia en nuestras instalaciones, creando un entorno cálido, seguro y eficiente. Nos aseguramos de que cada persona se sienta valorada y acompañada
+        En Centro Médico IDW64 creemos que la salud es un estado de completo bienestar físico, mental y emocional, y no
+        solo la ausencia de enfermedad.
+        Por eso, nos dedicamos a ofrecer atención médica de excelencia, con un enfoque humano y personalizado que te
+        acompaña en cada etapa de tu vida.
+        Contamos con un equipo de profesionales altamente capacitados y con amplia experiencia que se comprometen a
+        escucharte, entender tus necesidades
+        y ofrecerte soluciones médicas integrales. La confianza que nuestros pacientes depositan en nosotros es la base
+        de nuestro trabajo diario, y
+        nos esforzamos por honrarla en cada consulta. Para garantizar la mejor atención, implementamos protocolos
+        médicos actualizados y utilizamos tecnología
+        de vanguardia en nuestras instalaciones, creando un entorno cálido, seguro y eficiente. Nos aseguramos de que
+        cada persona se sienta valorada y acompañada
         desde el primer momento.
       </p>
     </section>
@@ -163,15 +115,24 @@
     <section id="trayectoria" class="container my-5">
       <h2 class="text-center mb-4">Trayectoria</h2>
       <p class="lead text-justify">
-        Desde nuestra fundación en 1998, en Centro Médico IDW64 nos hemos dedicado a construir un legado de excelencia y profesionalismo. 
-        A lo largo de más de 25 años, nuestra trayectoria ha estado marcada por un crecimiento constante, ampliando nuestras instalaciones, servicios y 
-        especialidades para adaptarnos a las necesidades de la comunidad. Hemos atendido a miles de pacientes, consolidándonos como un referente de confianza 
-        en el sector de la salud. Nuestra historia es un reflejo de nuestra innovación continua. Siempre hemos priorizado la formación constante de nuestro equipo 
-        y la incorporación de tecnologías médicas avanzadas. Este compromiso nos permite ofrecer un abordaje integral, basado en la evidencia científica y las mejores 
-        prácticas médicas disponibles. Además, hemos consolidado importantes alianzas con instituciones nacionales e internacionales, participando activamente en programas 
-        de investigación y prevención. Esto nos permite garantizar tratamientos efectivos y seguros para todos nuestros pacientes. En Centro Médico IDW64, no solo miramos 
-        al pasado, sino que nos proyectamos hacia el futuro. Seguimos trabajando para expandir nuestras capacidades, incorporando nuevas especialidades y servicios que 
-        respondan a las demandas cambiantes de la atención médica. Nuestro objetivo principal sigue siendo el mismo: ser tu aliado de confianza en el camino hacia una vida 
+        Desde nuestra fundación en 1998, en Centro Médico IDW64 nos hemos dedicado a construir un legado de excelencia y
+        profesionalismo.
+        A lo largo de más de 25 años, nuestra trayectoria ha estado marcada por un crecimiento constante, ampliando
+        nuestras instalaciones, servicios y
+        especialidades para adaptarnos a las necesidades de la comunidad. Hemos atendido a miles de pacientes,
+        consolidándonos como un referente de confianza
+        en el sector de la salud. Nuestra historia es un reflejo de nuestra innovación continua. Siempre hemos
+        priorizado la formación constante de nuestro equipo
+        y la incorporación de tecnologías médicas avanzadas. Este compromiso nos permite ofrecer un abordaje integral,
+        basado en la evidencia científica y las mejores
+        prácticas médicas disponibles. Además, hemos consolidado importantes alianzas con instituciones nacionales e
+        internacionales, participando activamente en programas
+        de investigación y prevención. Esto nos permite garantizar tratamientos efectivos y seguros para todos nuestros
+        pacientes. En Centro Médico IDW64, no solo miramos
+        al pasado, sino que nos proyectamos hacia el futuro. Seguimos trabajando para expandir nuestras capacidades,
+        incorporando nuevas especialidades y servicios que
+        respondan a las demandas cambiantes de la atención médica. Nuestro objetivo principal sigue siendo el mismo: ser
+        tu aliado de confianza en el camino hacia una vida
         más sana y plena.
       </p>
     </section>
@@ -200,15 +161,48 @@
     </section>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="bg-dark text-light py-4">
+  <footer>
     <div class="container">
-      <div class="row">
-        <div class="col-md-4 mb-3 text-center text-md-start">
-          <img src="scr/logo idwsa.png" alt="logo" class="img-fluid" style="max-width: 120px;">
+      <div class="row mb-3 footer-top-bar">
+        <div class="col-12 text-center">
+          <div class="social-links mt-1 ">
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item">
+                <a href="https://www.facebook.com/" target="_blank">
+                  <i class="bx bxl-facebook fs-3"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://www.instagram.com/" target="_blank">
+                  <i class="bx bxl-instagram fs-3"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://www.linkedin.com/" target="_blank">
+                  <i class="bx bxl-linkedin fs-3"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="" target="_blank">
+                  <i class="bx bxl-whatsapp fs-3"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="col-md-8 text-center text-md-end">
-          <ul class="list-unstyled">
+      </div>
+
+      <div class="row mb-3 justify-content-between align-items-center">
+        <div class="col-lg-4 d-none d-lg-block text-center p-3">
+          <div class="logo">
+            <a href="index.html">
+              <img src="scr/logo idwsa.png" alt="logo" class="img-fluid">
+            </a>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-6 text-center text-lg-start p-3">
+          <ul class="list-unstyled mb-0">
             <li><i class='bx bxs-map'></i> Av. Libertador 1234, Buenos Aires, Argentina</li>
             <li><i class='bx bxs-phone'></i> +54 11 1234 5678</li>
             <li><i class='bx bxs-envelope'></i> contacto@empresaejemplo.com</li>
@@ -217,8 +211,11 @@
           </ul>
         </div>
       </div>
-      <div class="text-center mt-3">
-        <small>&copy; 2025 Centro Médico. Todos los derechos reservados.</small>
+
+      <div class="row">
+        <div class="col-12 text-center mt-3">
+          <p class="mb-0">&copy; 2025 Centro Médico. Todos los derechos reservados.</p>
+        </div>
       </div>
     </div>
   </footer>
