@@ -23,51 +23,50 @@
     
 </head>
 
-<body>
+<body style="display: none;">
     <!-- Header / Navbar -->
-    <header class="position-relative">
-        <div class="header-container">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="index.html">
-                        <img src="scr/logo idwsa.png" alt="logo" style="height:40px;">
-                    </a>
+    <header class="position-relative min-vh-50">        
 
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+        <div class="header-container">
+
+            <nav class="navbar navbar-expand-lg navbar-light ">
+                <div class="container-fluid">
+
+
+                    <a class="navbar-brand" href="index.html"><img src="scr/logo idwsa.png" alt="logo"
+                            style="height:40px;"></a>
+
+                    <button class="navbar-toggler fw-bold" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
+                        aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 
                     <div class="collapse navbar-collapse" id="navbarContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+
+                        <ul class="navbar-nav me-auto mb-2 mb-md-0" id="menuPrincipal">
                             <li class="nav-item"><a class="nav-link fw-semibold" href="index.html">HOME</a></li>
-                            <li class="nav-item"><a class="nav-link fw-semibold" href="institucional.html">INSTITUCIONAL</a></li>
+                            <li class="nav-item"><a class="nav-link fw-semibold" href="institucional.html">INSTITUCIONAL<a></li>
                             <li class="nav-item"><a class="nav-link fw-semibold" href="contacto.html">CONTACTO</a></li>
-                            <li class="nav-item"><a class="nav-link fw-semibold active" href="admin.html">ADMINISTRACIÓN</a></li>
+                            <!-- <li class="nav-item"><a class="nav-link fw-semibold" href="admin.html">ADMINISTRACIÓN</a></li> -->
                         </ul>
 
                         <ul class="navbar-nav flex-row me-3">
-                            <li class="nav-item me-2"><a class="nav-link" href="https://www.facebook.com/" target="_blank"><i class="bx bxl-facebook fw-bold"></i></a></li>
-                            <li class="nav-item me-2"><a class="nav-link" href="https://www.instagram.com/" target="_blank"><i class="bx bxl-instagram fw-bold"></i></a></li>
-                            <li class="nav-item me-2"><a class="nav-link" href="https://www.linkedin.com/" target="_blank"><i class="bx bxl-linkedin fw-bold"></i></a></li>
-                            <li class="nav-item me-2"><a class="nav-link" href="#" target="_blank"><i class="bx bxl-whatsapp fw-bold"></i></a></li>
+                            <li class="nav-item me-2"><a class="nav-link" href="https://www.facebook.com/"
+                                    target="_blank"><i class="bx bxl-facebook fw-bold"></i></a></li>
+                            <li class="nav-item me-2"><a class="nav-link" href="https://www.instagram.com/"
+                                    target="_blank"><i class="bx bxl-instagram fw-bold"></i></a></li>
+                            <li class="nav-item me-2"><a class="nav-link" href="https://www.linkedin.com/"
+                                    target="_blank"><i class="bx bxl-linkedin fw-bold"></i></a></li>
+                            <li class="nav-item"><a class="nav-link" href="" target="_blank"><i
+                                        class="bx bxl-whatsapp fw-bold"></i></a></li>
                         </ul>
 
-                        <!-- User Avatar Dropdown -->
-                        <div class="dropdown mt-2 mt-lg-0">
-                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
-                                <img src="https://ui-avatars.com/api/?name=Admin+User&background=0d6efd&color=fff" alt="User" class="user-avatar me-2">
-                                <span class="d-inline">Admin User</span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-lg-end">
-                                <li><a class="dropdown-item" href="#"><i class="bx bx-user me-2"></i>Mi Perfil</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="bx bx-cog me-2"></i>Configuración</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item text-danger" href="index.html"><i class="bx bx-log-out me-2"></i>Cerrar Sesión</a></li>
-                            </ul>
+                        <div class="d-flex me-3" id="loginContainer">
+                            
                         </div>
                     </div>
                 </div>
-            </nav>
+            </nav> 
+
         </div>
     </header>
 
@@ -297,6 +296,8 @@
     
     <!-- Script -->
     <script src="admin.js"></script>
+    <script src="menu.js"></script>
+
 </body>
 
 </html>

@@ -21,21 +21,24 @@ moveCarousel();
 
 const form = document.getElementById('contact-form');
 
-    form.addEventListener('submit', function(e) {
-        // Evita que se envíe realmente el formulario
-        e.preventDefault();
 
-        // Si todos los campos requeridos están completos
-        if (form.checkValidity()) {
-            // Mostrar popup
-            alert('¡Mensaje enviado!');
-
-            // Redirigir a index.html
-            window.location.href = 'index.html';
-        } else {
-            // Si algo falta, deja que el navegador muestre la alerta de required
-            form.reportValidity();
-        }
-    });
+if (form) {
+  form.addEventListener('submit', function(e) {
+   
+    e.preventDefault();
 
     
+    if (form.checkValidity()) {
+    
+      alert('¡Mensaje enviado!');
+
+      
+      window.location.href = 'index.html';
+    } else {
+      
+      form.reportValidity();
+    }
+  });
+}
+
+

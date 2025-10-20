@@ -18,68 +18,11 @@
 
 <body>
 
-    <!-- <header>
-        <div class="header-container">
-            <div class="header-top-bar">
-                <div class="social-links">
-                    <ul>
-                        <li><a href="https://www.facebook.com/" target="_blank"><i class="bx bxl-facebook"></i></a></li>
-                        <li><a href="https://www.instagram.com/" target="_blank"><i class="bx bxl-instagram"></i></a>
-                        </li>
-                        <li><a href="https://www.linkedin.com/" target="_blank"><i class="bx bxl-linkedin"></i></a></li>
-                        <li><a href="" target="_blank"><i class="bx bxl-whatsapp"></i></a></li>
-                    </ul>
-                </div>
-
-                <div class="nav-bar">
-                    <nav>
-                        <ul>
-                            <li><a href="index.html">HOME</a></li>
-                            <li><a href="institucional.html">INSTITUCIONAL</a></li>
-                            <li><a href="#">CONTACTO</a></li>
-                        </ul>
-                    </nav>
-                </div>
-
-                <div class="turnos">
-                    <button><a href="#">PIDA TURNO AQUI</a></button>
-                </div>
-            </div>
-            <div class="header-middle">
-                <div class="left">
-                    <div class="logo">
-                        <a href="index.html"><img src="scr/logo idwsa.png" alt="logo"></a>
-                    </div>
-                    <div class="titulo">
-                        <h1>Centro Médico IDW64</h1>
-                        <p class="site-description">Demasiados años dedicados a la salud</p>
-                    </div>
-                </div>
-                <div class="right">
-
-                </div>
-            </div>
-            <div class="header-bottom-bar">
-                <div class="carousel">
-                    <div class="carousel-track">
-                        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osHA.jpg" alt="Imagen 1">
-                        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osOsde.jpg" alt="Imagen 2">
-                        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osOspatca.gif" alt="Imagen 3">
-                        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osSS.jpg" alt="Imagen 4">
-                        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osOsdipp.gif" alt="Imagen 5">
-                        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osComisarios.png" alt="Imagen 6">
-                        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osCobermed.png" alt="Imagen 7">
-                        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osDasuten.jpg" alt="Imagen 8">
-                        <img src="https://www.cmbelgrano.com.ar/images/cobertura/osOmint.png" alt="Imagen 9">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header> -->
+   
     <header class="position-relative min-vh-50">
 
-        <!-- <img src="https://www.cmpsalta.com.ar/assets/img/hero-bg.jpg" alt="bg"
-            class="position-absolute top-0 start-0 w-100 h-100" style="object-fit: cover; z-index: -1;"> -->
+        <img src="https://www.cmpsalta.com.ar/assets/img/hero-bg.jpg" alt="bg"
+            class="position-absolute top-0 start-0 w-100 h-100" style="object-fit: cover; z-index: -1;">
 
         <div class="header-container">
 
@@ -96,12 +39,11 @@
 
                     <div class="collapse navbar-collapse" id="navbarContent">
 
-                        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <ul class="navbar-nav me-auto mb-2 mb-md-0" id="menuPrincipal">
                             <li class="nav-item"><a class="nav-link fw-semibold" href="#">HOME</a></li>
-                            <li class="nav-item"><a class="nav-link fw-semibold"
-                                    href="institucional.html">INSTITUCIONAL</a></li>
+                            <li class="nav-item"><a class="nav-link fw-semibold" href="institucional.html">INSTITUCIONAL<a></li>
                             <li class="nav-item"><a class="nav-link fw-semibold" href="contacto.html">CONTACTO</a></li>
-                            <li class="nav-item"><a class="nav-link fw-semibold" href="admin.html">ADMINISTRACIÓN</a></li>
+                            <!-- <li class="nav-item"><a class="nav-link fw-semibold" href="admin.html">ADMINISTRACIÓN</a></li> -->
                         </ul>
 
                         <ul class="navbar-nav flex-row me-3">
@@ -115,21 +57,21 @@
                                         class="bx bxl-whatsapp fw-bold"></i></a></li>
                         </ul>
 
-                        <div class="d-flex me-3">
-                            <a href="#" class="btn btn-primary">PIDA TURNO AQUI</a>
+                        <div class="d-flex me-3" id="loginContainer">
+                            <a href="login.html" class="btn btn-primary">LOGIN</a>
                         </div>
                     </div>
                 </div>
             </nav>
 
-            <!-- <div class="header-middle text-center mt-5 py-3">
+            <div class="header-middle text-center mt-5 py-3">
                 <div class="container d-flex flex-column flex-md-row align-items-center justify-content-center">
                     <div class="titulo text-center text-md-start">
                         <h1 class="h3 m-0 fw-bold">Centro Médico IDW64</h1>
                         <p class="site-description mb-0 fw-semibold">Demasiados años dedicados a la salud</p>
                     </div>
                 </div>
-            </div> -->
+            </div>
 
             <div class="header-bottom-bar">
                 <div class="carousel">
@@ -359,6 +301,7 @@
         crossorigin="anonymous"></script>
     <!-- Custom JS -->
     <script src="scripts.js"></script>
+    <script src="menu.js"></script>
 </body>
 
 </html>

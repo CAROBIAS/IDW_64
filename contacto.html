@@ -101,12 +101,12 @@
 
                     <div class="collapse navbar-collapse" id="navbarContent">
 
-                        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <ul class="navbar-nav me-auto mb-2 mb-md-0" id="menuPrincipal">
                             <li class="nav-item"><a class="nav-link fw-semibold" href="index.html">HOME</a></li>
                             <li class="nav-item"><a class="nav-link fw-semibold"
                                     href="institucional.html">INSTITUCIONAL</a></li>
                             <li class="nav-item"><a class="nav-link fw-semibold" href="#">CONTACTO</a></li>
-                            <li class="nav-item"><a class="nav-link fw-semibold active" href="admin.html">ADMINISTRACIÓN</a></li>
+                            <!-- <li class="nav-item"><a class="nav-link fw-semibold active" href="admin.html">ADMINISTRACIÓN</a></li> -->
                         </ul>
 
                         <ul class="navbar-nav flex-row me-3">
@@ -120,8 +120,8 @@
                                         class="bx bxl-whatsapp fw-bold"></i></a></li>
                         </ul>
 
-                        <div class="d-flex me-3">
-                            <a href="#" class="btn btn-primary">PIDA TURNO AQUI</a>
+                        <div class="d-flex me-3" id="loginContainer">
+                            <a href="login.html" class="btn btn-primary">LOGIN</a>
                         </div>
                     </div>
                 </div>
@@ -255,11 +255,12 @@
 
 
     <!-- Boostrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
     <!-- Custom JS -->
     <script src="scripts.js"></script>
+    <script src="menu.js"></script>
+    
 </body>
 
 </html>
