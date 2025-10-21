@@ -9,74 +9,100 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-
-
-// Datos simulados (temporal, luego vendrá de localStorage)
-let medicos = [
-    {
-        id: 1,
-        nombre: "Juan",
-        apellido: "Pérez",
-        especialidad: "Cardiología",
-        matricula: "MD1001",
-        telefono: "+54 11 4567-8901",
-        email: "jperez@clinica.com",
-        imagen: "https://ui-avatars.com/api/?name=Juan+Perez&background=random",
-        biografia: "Especialista en cardiología con 15 años de experiencia.",
-        activo: true
-    },
-    {
-        id: 2,
-        nombre: "María",
-        apellido: "González",
-        especialidad: "Pediatría",
-        matricula: "MD1002",
-        telefono: "+54 11 4567-8902",
-        email: "mgonzalez@clinica.com",
-        imagen: "https://ui-avatars.com/api/?name=Maria+Gonzalez&background=random",
-        biografia: "Pediatra especializada en neonatología.",
-        activo: true
-    },
-    {
-        id: 3,
-        nombre: "Carlos",
-        apellido: "Rodríguez",
-        especialidad: "Neurología",
-        matricula: "MD1003",
-        telefono: "+54 11 4567-8903",
-        email: "crodriguez@clinica.com",
-        imagen: "https://ui-avatars.com/api/?name=Carlos+Rodriguez&background=random",
-        biografia: "Neurólogo con especialización en epilepsia.",
-        activo: true
-    },
-    {
-        id: 4,
-        nombre: "Ana",
-        apellido: "Martínez",
-        especialidad: "Ginecología",
-        matricula: "MD1004",
-        telefono: "+54 11 4567-8904",
-        email: "amartinez@clinica.com",
-        imagen: "https://ui-avatars.com/api/?name=Ana+Martinez&background=random",
-        biografia: "Ginecóloga especializada en obstetricia.",
-        activo: false
-    },
-    {
-        id: 5,
-        nombre: "Luis",
-        apellido: "Fernández",
-        especialidad: "Traumatología",
-        matricula: "MD1005",
-        telefono: "+54 11 4567-8905",
-        email: "lfernandez@clinica.com",
-        imagen: "https://ui-avatars.com/api/?name=Luis+Fernandez&background=random",
-        biografia: "Traumatólogo especializado en cirugía deportiva.",
-        activo: true
+// Inicializar medicos desde localStorage o por defecto
+function inicializarMedicos() {
+    const medicosGuardados = localStorage.getItem('medicos');
+    
+    if (medicosGuardados) {
+        // Si ya hay medicos guardados, cargarlos
+        return JSON.parse(medicosGuardados);
+    } else {
+        // Si no crear datos iniciales
+        const medicosIniciales = [
+            {
+                id: 1,
+                nombre: "Juan",
+                apellido: "Pérez",
+                especialidad: "Cardiología",
+                matricula: "MD1001",
+                telefono: "+54 11 4567-8901",
+                email: "jperez@clinica.com",
+                imagen: "https://ui-avatars.com/api/?name=Juan+Perez&background=random",
+                biografia: "Especialista en cardiología con 15 años de experiencia.",
+                activo: true
+            },
+            {
+                id: 2,
+                nombre: "María",
+                apellido: "González",
+                especialidad: "Pediatría",
+                matricula: "MD1002",
+                telefono: "+54 11 4567-8902",
+                email: "mgonzalez@clinica.com",
+                imagen: "https://ui-avatars.com/api/?name=Maria+Gonzalez&background=random",
+                biografia: "Pediatra especializada en neonatología.",
+                activo: true
+            },
+            {
+                id: 3,
+                nombre: "Carlos",
+                apellido: "Rodríguez",
+                especialidad: "Neurología",
+                matricula: "MD1003",
+                telefono: "+54 11 4567-8903",
+                email: "crodriguez@clinica.com",
+                imagen: "https://ui-avatars.com/api/?name=Carlos+Rodriguez&background=random",
+                biografia: "Neurólogo con especialización en epilepsia.",
+                activo: true
+            },
+            {
+                id: 4,
+                nombre: "Ana",
+                apellido: "Martínez",
+                especialidad: "Ginecología",
+                matricula: "MD1004",
+                telefono: "+54 11 4567-8904",
+                email: "amartinez@clinica.com",
+                imagen: "https://ui-avatars.com/api/?name=Ana+Martinez&background=random",
+                biografia: "Ginecóloga especializada en obstetricia.",
+                activo: false
+            },
+            {
+                id: 5,
+                nombre: "Luis",
+                apellido: "Fernández",
+                especialidad: "Traumatología",
+                matricula: "MD1005",
+                telefono: "+54 11 4567-8905",
+                email: "lfernandez@clinica.com",
+                imagen: "https://ui-avatars.com/api/?name=Luis+Fernandez&background=random",
+                biografia: "Traumatólogo especializado en cirugía deportiva.",
+                activo: true
+            }
+        ];
+        
+        // Guardar los datos iniciales en localStorage
+        guardarMedicos(medicosIniciales);
+        return medicosIniciales;
     }
-];
+}
 
+// Guardar medicos en localStorage
+function guardarMedicos(medicosArray) {
+    localStorage.setItem('medicos', JSON.stringify(medicosArray));
+}
+
+// Cargar medicos desde localStorage
+function cargarMedicos() {
+    const medicosGuardados = localStorage.getItem('medicos');
+    return medicosGuardados ? JSON.parse(medicosGuardados) : [];
+}
+
+let medicos = inicializarMedicos();
 let table;
 let showInactive = false;
+
+// Datatable
 
 // Inicializar DataTable
 $(document).ready(function() {
@@ -88,6 +114,8 @@ function loadTable() {
         table.destroy();
     }
 
+    // Recargar medicos desde localStorage antes de mostrar
+    medicos = cargarMedicos();
     const data = showInactive ? medicos : medicos.filter(m => m.activo);
 
     table = $('#medicosTable').DataTable({
@@ -134,6 +162,8 @@ function loadTable() {
     });
 }
 
+// Interfaz
+
 function toggleInactive() {
     showInactive = document.getElementById('showInactiveToggle').checked;
     loadTable();
@@ -147,6 +177,8 @@ function openCreateModal() {
 }
 
 function verMedico(id) {
+    // Recargar desde localStorage para tener datos actualizados
+    medicos = cargarMedicos();
     const medico = medicos.find(m => m.id === id);
     if (!medico) return;
 
@@ -174,6 +206,8 @@ function verMedico(id) {
 }
 
 function editarMedico(id) {
+    // Recargar desde localStorage para tener datos actualizados
+    medicos = cargarMedicos();
     const medico = medicos.find(m => m.id === id);
     if (!medico) return;
 
@@ -199,6 +233,9 @@ function guardarMedico() {
         return;
     }
 
+    // Recargar desde localStorage para tener datos actualizados
+    medicos = cargarMedicos();
+
     const id = document.getElementById('medicoId').value;
     const medicoData = {
         nombre: document.getElementById('nombre').value,
@@ -217,22 +254,34 @@ function guardarMedico() {
         const index = medicos.findIndex(m => m.id === parseInt(id));
         medicos[index] = { ...medicos[index], ...medicoData };
     } else {
-        // Crear nuevo
-        const newId = Math.max(...medicos.map(m => m.id)) + 1;
+        // Crear nuevo, generar id unico
+        const newId = medicos.length > 0 ? Math.max(...medicos.map(m => m.id)) + 1 : 1;
         medicos.push({ id: newId, ...medicoData });
     }
 
+    // Guardar en localStorage
+    guardarMedicos(medicos);
+
     bootstrap.Modal.getInstance(document.getElementById('medicoModal')).hide();
     loadTable();
+    
+    alert(id ? 'Médico actualizado exitosamente' : 'Médico creado exitosamente');
 }
 
 function eliminarMedico(id) {
+    // Recargar desde localStorage para tener datos actualizados
+    medicos = cargarMedicos();
     const medico = medicos.find(m => m.id === id);
     if (!medico) return;
 
     if (confirm(`¿Está seguro de desactivar a ${medico.nombre} ${medico.apellido}?`)) {
         const index = medicos.findIndex(m => m.id === id);
         medicos[index].activo = false;
+        
+        // Guardar en localStorage
+        guardarMedicos(medicos);
+        
         loadTable();
+        alert('Médico desactivado exitosamente');
     }
 }
