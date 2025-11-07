@@ -18,14 +18,15 @@
     --bs-light: var(--bg-color-lightgrey)
 }
 
+/*
 .header-container{
     background-image: url(https://www.cmpsalta.com.ar/assets/img/hero-bg.jpg);
-    /* min-height: 500px; */
+    
     background-repeat: no-repeat;      
     background-size: cover;
 }
-
-.header-top-bar{
+*/
+.header-top-bar {
     padding: 0 50px;
     background-color: var(--bg-color-grey);
     height: 50px;
@@ -34,89 +35,164 @@
     align-items: center;
 }
 
-.header-top-bar ul{
+.header-top-bar ul {
     display: flex;
     gap: 20px;
     list-style-type: none;
 }
 
-.header-top-bar ul li a{
+.header-top-bar ul li a {
     color: var(--font-color-white);
     text-decoration: none;
 }
 
-.turnos button{
+.turnos button {
     background-color: var(--bg-color-lightblue);
     padding: 5px;
     border-radius: 5px;
     font-weight: bold;
 }
 
-.turnos button a{
+.turnos button a {
     text-decoration: none;
     color: var(--font-color-white);
 }
 
-.header-middle{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    padding: 10px 50px;
+
+/* Contacto */
+
+form {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background: var(--bg-color-white);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px var(--shadow--color-black);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.left{
+form h2 {
+    text-align: center;
+    color: var(--bg-color-blue);
+    margin-bottom: 10px;
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--font-color-grey);
+}
+
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: var(--main-font-arial);
+    font-size: 1rem;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+    border-color: var(--bg-color-blue);
+    outline: none;
+    box-shadow: 0 0 5px var(--shadow--color-black);
+}
+
+form button {
+    background: var(--bg-color-blue);
+    color: var(--font-color-white);
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background: var(--hover-color-darkblue);
+}
+
+
+/*  aca esta lo de las tarjetas... para que tengas de referencia de lo que vimos en el meet   */
+
+
+.tarjetas {
+    background-color: var(--bg-color-lightgrey);
+    border-radius: 15px;
+}
+
+@media (min-width: 768px) {
+    .header-middle {
+        margin-top: 3rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding: 10px 50px;
+    }
+}
+
+
+.left {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.logo img{
+.logo img {
     width: 40%;
 }
 
-.site-description{
+.site-description {
     text-transform: uppercase;
     margin-top: 10px;
 }
 
 .carousel {
-  width: 100%;
-  overflow: hidden;
-  background: var(--bg-color-grey);
-  padding: 10px 0;
+    width: 100%;
+    overflow: hidden;
+    background: var(--bg-color-grey);
+    padding: 10px 0;
 }
 
 .carousel-track {
-  display: flex;
-  gap: 50px;
-  will-change: transform;
+    display: flex;
+    gap: 50px;
+    will-change: transform;
 }
 
 .carousel img {
-  width: 50px;
-  border-radius: 10px;
+    width: 50px;
+    border-radius: 10px;
 }
 
-section{
+section {
     padding: 50px;
     text-align: center;
 }
 
-section h2{
+section h2 {
     text-decoration: underline;
     text-transform: uppercase;
     font-size: xx-large;
 }
 
 
-.tarjetas-container{
+.tarjetas-container {
     margin-top: 50px;
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 50px;
-    
+
 }
 
-.tarjeta-box{
+.tarjeta-box {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -128,35 +204,35 @@ section h2{
 
 
 
-.tarjeta-img img{
+.tarjeta-img img {
     border-radius: 100px;
     object-fit: cover;
 }
 
 
-footer{
-    background-color: var(--bg-color-grey);
-    color: var(--font-color-white);
+footer {
+    background-color: var(--bg-color-grey) !important;
+    color: var(--font-color-white) !important;
 }
 
-.footer-top-bar{
+.footer-top-bar {
     min-height: 30px;
     padding: 10px;
 }
 
-.footer-top-bar ul{
+.footer-top-bar ul {
     display: flex;
     justify-content: center;
     gap: 30px;
     list-style-type: none;
 }
 
-.footer-top-bar ul li i{
+.footer-top-bar ul li i {
     color: var(--font-color-white);
 }
 
 
-.footer-middle{
+.footer-middle {
     padding: 0 50px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -164,15 +240,15 @@ footer{
     justify-items: center;
 }
 
-.footer-middle-right ul{
+.footer-middle-right ul {
     list-style-type: none;
 }
 
-.footer-middle-right ul li{
+.footer-middle-right ul li {
     margin: 10px 0;
 }
 
-.footer-bottom-bar{
+.footer-bottom-bar {
     text-align: center;
     padding: 5px;
 }
@@ -182,20 +258,21 @@ footer{
 
 /* institucional */
 
-#nosotros p, #trayectoria p {
+#nosotros p,
+#trayectoria p {
     text-align: justify;
     font-size: large;
     margin-top: 40px;
 }
 
-#especialidades ul{
+#especialidades ul {
     margin-top: 40px;
     list-style-type: none;
     text-align: justify;
 }
 
 
-#especialidades ul li{
+#especialidades ul li {
     margin: 10px 0;
     font-size: large;
 }
@@ -264,3 +341,48 @@ form button {
 form button:hover {
     background: var(--hover-color-darkblue);
 } */
+
+
+
+.bx{
+    font-size: 1.2rem !important;
+}
+
+.footer-top-bar .social-links i.bx {
+    font-size: 1rem !important; 
+}
+
+/* Admin.html */
+
+.user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #0d6efd;
+        }
+        
+        .table-actions {
+            white-space: nowrap;
+        }
+        
+        .btn-action {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+        }
+        
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+        }
+        
+        .status-active {
+            background-color: #d1f4e0;
+            color: #0f5132;
+        }
+        
+        .status-inactive {
+            background-color: #f8d7da;
+            color: #842029;
+        }

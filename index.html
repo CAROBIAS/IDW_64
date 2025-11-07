@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Boostrap cdn -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
     <!-- Custom ico -->
@@ -17,47 +18,62 @@
 
 <body>
 
-    <header>
+
+    <header class="position-relative min-vh-50">
+
+        <img src="https://www.cmpsalta.com.ar/assets/img/hero-bg.jpg" alt="bg"
+            class="position-absolute top-0 start-0 w-100 h-100" style="object-fit: cover; z-index: -1;">
+
         <div class="header-container">
-            <div class="header-top-bar">
-                <div class="social-links">
-                    <ul>
-                        <li><a href="https://www.facebook.com/" target="_blank"><i class="bx bxl-facebook"></i></a></li>
-                        <li><a href="https://www.instagram.com/" target="_blank"><i class="bx bxl-instagram"></i></a>
-                        </li>
-                        <li><a href="https://www.linkedin.com/" target="_blank"><i class="bx bxl-linkedin"></i></a></li>
-                        <li><a href="" target="_blank"><i class="bx bxl-whatsapp"></i></a></li>
-                    </ul>
-                </div>
 
-                <div class="nav-bar">
-                    <nav>
-                        <ul>
-                            <li><a href="#">HOME</a></li>
-                            <li><a href="institucional.html">INSTITUCIONAL</a></li>
-                            <li><a href="contacto.html">CONTACTO</a></li>
+            <nav class="navbar navbar-expand-lg navbar-light ">
+                <div class="container-fluid">
+
+
+                    <a class="navbar-brand" href="index.html"><img src="scr/logo idwsa.png" alt="logo"
+                            style="height:40px;"></a>
+
+                    <button class="navbar-toggler fw-bold" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
+                        aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+                    <div class="collapse navbar-collapse" id="navbarContent">
+
+                        <ul class="navbar-nav me-auto mb-2 mb-md-0" id="menuPrincipal">
+                            <li class="nav-item"><a class="nav-link fw-semibold" href="#">HOME</a></li>
+                            <li class="nav-item"><a class="nav-link fw-semibold"
+                                    href="institucional.html">INSTITUCIONAL<a></li>
+                            <li class="nav-item"><a class="nav-link fw-semibold" href="contacto.html">CONTACTO</a></li>
+                            <!-- <li class="nav-item"><a class="nav-link fw-semibold" href="admin.html">ADMINISTRACIÓN</a></li> -->
                         </ul>
-                    </nav>
-                </div>
 
-                <div class="turnos">
-                    <button><a href="#">PIDA TURNO AQUI</a></button>
+                        <ul class="navbar-nav flex-row me-3">
+                            <li class="nav-item me-2"><a class="nav-link" href="https://www.facebook.com/"
+                                    target="_blank"><i class="bx bxl-facebook fw-bold"></i></a></li>
+                            <li class="nav-item me-2"><a class="nav-link" href="https://www.instagram.com/"
+                                    target="_blank"><i class="bx bxl-instagram fw-bold"></i></a></li>
+                            <li class="nav-item me-2"><a class="nav-link" href="https://www.linkedin.com/"
+                                    target="_blank"><i class="bx bxl-linkedin fw-bold"></i></a></li>
+                            <li class="nav-item"><a class="nav-link" href="" target="_blank"><i
+                                        class="bx bxl-whatsapp fw-bold"></i></a></li>
+                        </ul>
+
+                        <div class="d-flex me-3" id="loginContainer">
+                            <a href="login.html" class="btn btn-primary">LOGIN</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="header-middle text-center mt-5 py-3">
+                <div class="container d-flex flex-column flex-md-row align-items-center justify-content-center">
+                    <div class="titulo text-center text-md-start">
+                        <h1 class="h3 m-0 fw-bold">Centro Médico IDW64</h1>
+                        <p class="site-description mb-0 fw-semibold">Demasiados años dedicados a la salud</p>
+                    </div>
                 </div>
             </div>
-            <div class="header-middle">
-                <div class="left">
-                    <div class="logo">
-                        <a href="index.html"><img src="scr/logo idwsa.png" alt="logo"></a>
-                    </div>
-                    <div class="titulo">
-                        <h1>Centro Médico IDW64</h1>
-                        <p class="site-description">Demasiados años dedicados a la salud</p>
-                    </div>
-                </div>
-                <div class="right">
 
-                </div>
-            </div>
             <div class="header-bottom-bar">
                 <div class="carousel">
                     <div class="carousel-track">
@@ -73,158 +89,230 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </header>
 
     <main>
-        <section class="tarjetas">
-            <h2>nuestros medicos</h2>
-            <div class="tarjetas-container">
-                <article class="tarjeta-box">
-                    <div class="tarjeta-datos">
-                        <h3>NOMBRE DEL MEDICO</h3>
-                        <P>ESPECIALIDAD</P>
-                        <p>MD9999</p>
-                    </div>
-                    <div class="tarjeta-img">
-                        <img src="https://imgs.search.brave.com/rlQPWR9YOLUB173dSgMXcpGoddnlbqw27vDFt2aHIok/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9zMy1l/dS13ZXN0LTEuYW1h/em9uYXdzLmNvbS9t/aW9kb3R0b3JlLml0/L2RvY3Rvci80NTVk/ZmIvNDU1ZGZiNWQ1/MThjOTcyYTZkODAz/ZWExMjMxZDg4OTBf/bWVkaXVtX3NxdWFy/ZS5qcGc"
-                            alt="">
-                    </div>
-                </article>
-                <article class="tarjeta-box">
-                    <div class="tarjeta-datos">
-                        <h3>NOMBRE DEL MEDICO</h3>
-                        <P>ESPECIALIDAD</P>
-                        <p>MD9999</p>
-                    </div>
-                    <div class="tarjeta-img">
-                        <img src="https://imgs.search.brave.com/rlQPWR9YOLUB173dSgMXcpGoddnlbqw27vDFt2aHIok/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9zMy1l/dS13ZXN0LTEuYW1h/em9uYXdzLmNvbS9t/aW9kb3R0b3JlLml0/L2RvY3Rvci80NTVk/ZmIvNDU1ZGZiNWQ1/MThjOTcyYTZkODAz/ZWExMjMxZDg4OTBf/bWVkaXVtX3NxdWFy/ZS5qcGc"
-                            alt="">
-                    </div>
-                </article>
-                <article class="tarjeta-box">
-                    <div class="tarjeta-datos">
-                        <h3>NOMBRE DEL MEDICO</h3>
-                        <P>ESPECIALIDAD</P>
-                        <p>MD9999</p>
-                    </div>
-                    <div class="tarjeta-img">
-                        <img src="https://imgs.search.brave.com/rlQPWR9YOLUB173dSgMXcpGoddnlbqw27vDFt2aHIok/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9zMy1l/dS13ZXN0LTEuYW1h/em9uYXdzLmNvbS9t/aW9kb3R0b3JlLml0/L2RvY3Rvci80NTVk/ZmIvNDU1ZGZiNWQ1/MThjOTcyYTZkODAz/ZWExMjMxZDg4OTBf/bWVkaXVtX3NxdWFy/ZS5qcGc"
-                            alt="">
-                    </div>
-                </article>
-                <article class="tarjeta-box">
-                    <div class="tarjeta-datos">
-                        <h3>NOMBRE DEL MEDICO</h3>
-                        <P>ESPECIALIDAD</P>
-                        <p>MD9999</p>
-                    </div>
-                    <div class="tarjeta-img">
-                        <img src="https://imgs.search.brave.com/rlQPWR9YOLUB173dSgMXcpGoddnlbqw27vDFt2aHIok/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9zMy1l/dS13ZXN0LTEuYW1h/em9uYXdzLmNvbS9t/aW9kb3R0b3JlLml0/L2RvY3Rvci80NTVk/ZmIvNDU1ZGZiNWQ1/MThjOTcyYTZkODAz/ZWExMjMxZDg4OTBf/bWVkaXVtX3NxdWFy/ZS5qcGc"
-                            alt="">
-                    </div>
-                </article>
-                <article class="tarjeta-box">
-                    <div class="tarjeta-datos">
-                        <h3>NOMBRE DEL MEDICO</h3>
-                        <P>ESPECIALIDAD</P>
-                        <p>MD9999</p>
-                    </div>
-                    <div class="tarjeta-img">
-                        <img src="https://imgs.search.brave.com/rlQPWR9YOLUB173dSgMXcpGoddnlbqw27vDFt2aHIok/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9zMy1l/dS13ZXN0LTEuYW1h/em9uYXdzLmNvbS9t/aW9kb3R0b3JlLml0/L2RvY3Rvci80NTVk/ZmIvNDU1ZGZiNWQ1/MThjOTcyYTZkODAz/ZWExMjMxZDg4OTBf/bWVkaXVtX3NxdWFy/ZS5qcGc"
-                            alt="">
-                    </div>
-                </article>
-                <article class="tarjeta-box">
-                    <div class="tarjeta-datos">
-                        <h3>NOMBRE DEL MEDICO</h3>
-                        <P>ESPECIALIDAD</P>
-                        <p>MD9999</p>
-                    </div>
-                    <div class="tarjeta-img">
-                        <img src="https://imgs.search.brave.com/rlQPWR9YOLUB173dSgMXcpGoddnlbqw27vDFt2aHIok/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9zMy1l/dS13ZXN0LTEuYW1h/em9uYXdzLmNvbS9t/aW9kb3R0b3JlLml0/L2RvY3Rvci80NTVk/ZmIvNDU1ZGZiNWQ1/MThjOTcyYTZkODAz/ZWExMjMxZDg4OTBf/bWVkaXVtX3NxdWFy/ZS5qcGc"
-                            alt="">
-                    </div>
-                </article>
-                <article class="tarjeta-box">
-                    <div class="tarjeta-datos">
-                        <h3>NOMBRE DEL MEDICO</h3>
-                        <P>ESPECIALIDAD</P>
-                        <p>MD9999</p>
-                    </div>
-                    <div class="tarjeta-img">
-                        <img src="https://imgs.search.brave.com/rlQPWR9YOLUB173dSgMXcpGoddnlbqw27vDFt2aHIok/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9zMy1l/dS13ZXN0LTEuYW1h/em9uYXdzLmNvbS9t/aW9kb3R0b3JlLml0/L2RvY3Rvci80NTVk/ZmIvNDU1ZGZiNWQ1/MThjOTcyYTZkODAz/ZWExMjMxZDg4OTBf/bWVkaXVtX3NxdWFy/ZS5qcGc"
-                            alt="">
-                    </div>
-                </article>
-                <article class="tarjeta-box">
-                    <div class="tarjeta-datos">
-                        <h3>NOMBRE DEL MEDICO</h3>
-                        <P>ESPECIALIDAD</P>
-                        <p>MD9999</p>
-                    </div>
-                    <div class="tarjeta-img">
-                        <img src="https://imgs.search.brave.com/rlQPWR9YOLUB173dSgMXcpGoddnlbqw27vDFt2aHIok/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9zMy1l/dS13ZXN0LTEuYW1h/em9uYXdzLmNvbS9t/aW9kb3R0b3JlLml0/L2RvY3Rvci80NTVk/ZmIvNDU1ZGZiNWQ1/MThjOTcyYTZkODAz/ZWExMjMxZDg4OTBf/bWVkaXVtX3NxdWFy/ZS5qcGc"
-                            alt="">
-                    </div>
-                </article>
-                <article class="tarjeta-box">
-                    <div class="tarjeta-datos">
-                        <h3>NOMBRE DEL MEDICO</h3>
-                        <P>ESPECIALIDAD</P>
-                        <p>MD9999</p>
-                    </div>
-                    <div class="tarjeta-img">
-                        <img src="https://imgs.search.brave.com/rlQPWR9YOLUB173dSgMXcpGoddnlbqw27vDFt2aHIok/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9zMy1l/dS13ZXN0LTEuYW1h/em9uYXdzLmNvbS9t/aW9kb3R0b3JlLml0/L2RvY3Rvci80NTVk/ZmIvNDU1ZGZiNWQ1/MThjOTcyYTZkODAz/ZWExMjMxZDg4OTBf/bWVkaXVtX3NxdWFy/ZS5qcGc"
-                            alt="">
-                    </div>
-                </article>
 
+        <section class="tarjetas">
+            <h2 class="text-center text-uppercase text-decoration-underline my-5">Nuestros Médicos</h2>
+            <div class="row justify-content-center" id="tarjetas-container">
+               
             </div>
         </section>
 
 
+
+        <!-- <section class="tarjetas">
+            <h2 class="text-center text-uppercase text-decoration-underline my-5">nuestros medicos</h2>
+            <div class="row justify-content-center">
+                <article class="col-12 col-md-6 col-lg-4 p-3 mt-4">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="https://imgs.search.brave.com/rlQPWR9YOLUB173dSgMXcpGoddnlbqw27vDFt2aHIok/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9zMy1l/dS13ZXN0LTEuYW1h/em9uYXdzLmNvbS9t/aW9kb3R0b3JlLml0/L2RvY3Rvci80NTVk/ZmIvNDU1ZGZiNWQ1/MThjOTcyYTZkODAz/ZWExMjMxZDg4OTBf/bWVkaXVtX3NxdWFy/ZS5qcGc" alt="" class="img-fluid rounded-pill">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">NOMBRE DEL MEDICO</h5>
+                                <p class="card-text">ESPECIALIDAD</p>
+                                <p class="card-text"><small class="text-body-secondary">MD9999</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="col-12 col-md-6 col-lg-4 p-3 mt-4">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="https://imgs.search.brave.com/rlQPWR9YOLUB173dSgMXcpGoddnlbqw27vDFt2aHIok/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9zMy1l/dS13ZXN0LTEuYW1h/em9uYXdzLmNvbS9t/aW9kb3R0b3JlLml0/L2RvY3Rvci80NTVk/ZmIvNDU1ZGZiNWQ1/MThjOTcyYTZkODAz/ZWExMjMxZDg4OTBf/bWVkaXVtX3NxdWFy/ZS5qcGc" alt="" class="img-fluid rounded-pill">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">NOMBRE DEL MEDICO</h5>
+                                <p class="card-text">ESPECIALIDAD</p>
+                                <p class="card-text"><small class="text-body-secondary">MD9999</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="col-12 col-md-6 col-lg-4 p-3 mt-4">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="https://imgs.search.brave.com/rlQPWR9YOLUB173dSgMXcpGoddnlbqw27vDFt2aHIok/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9zMy1l/dS13ZXN0LTEuYW1h/em9uYXdzLmNvbS9t/aW9kb3R0b3JlLml0/L2RvY3Rvci80NTVk/ZmIvNDU1ZGZiNWQ1/MThjOTcyYTZkODAz/ZWExMjMxZDg4OTBf/bWVkaXVtX3NxdWFy/ZS5qcGc" alt="" class="img-fluid rounded-pill">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">NOMBRE DEL MEDICO</h5>
+                                <p class="card-text">ESPECIALIDAD</p>
+                                <p class="card-text"><small class="text-body-secondary">MD9999</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="col-12 col-md-6 col-lg-4 p-3 mt-4">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="https://imgs.search.brave.com/rlQPWR9YOLUB173dSgMXcpGoddnlbqw27vDFt2aHIok/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9zMy1l/dS13ZXN0LTEuYW1h/em9uYXdzLmNvbS9t/aW9kb3R0b3JlLml0/L2RvY3Rvci80NTVk/ZmIvNDU1ZGZiNWQ1/MThjOTcyYTZkODAz/ZWExMjMxZDg4OTBf/bWVkaXVtX3NxdWFy/ZS5qcGc" alt="" class="img-fluid rounded-pill">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">NOMBRE DEL MEDICO</h5>
+                                <p class="card-text">ESPECIALIDAD</p>
+                                <p class="card-text"><small class="text-body-secondary">MD9999</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="col-12 col-md-6 col-lg-4 p-3 mt-4">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="https://imgs.search.brave.com/rlQPWR9YOLUB173dSgMXcpGoddnlbqw27vDFt2aHIok/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9zMy1l/dS13ZXN0LTEuYW1h/em9uYXdzLmNvbS9t/aW9kb3R0b3JlLml0/L2RvY3Rvci80NTVk/ZmIvNDU1ZGZiNWQ1/MThjOTcyYTZkODAz/ZWExMjMxZDg4OTBf/bWVkaXVtX3NxdWFy/ZS5qcGc" alt="" class="img-fluid rounded-pill">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">NOMBRE DEL MEDICO</h5>
+                                <p class="card-text">ESPECIALIDAD</p>
+                                <p class="card-text"><small class="text-body-secondary">MD9999</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="col-12 col-md-6 col-lg-4 p-3 mt-4">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="https://imgs.search.brave.com/rlQPWR9YOLUB173dSgMXcpGoddnlbqw27vDFt2aHIok/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9zMy1l/dS13ZXN0LTEuYW1h/em9uYXdzLmNvbS9t/aW9kb3R0b3JlLml0/L2RvY3Rvci80NTVk/ZmIvNDU1ZGZiNWQ1/MThjOTcyYTZkODAz/ZWExMjMxZDg4OTBf/bWVkaXVtX3NxdWFy/ZS5qcGc" alt="" class="img-fluid rounded-pill">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">NOMBRE DEL MEDICO</h5>
+                                <p class="card-text">ESPECIALIDAD</p>
+                                <p class="card-text"><small class="text-body-secondary">MD9999</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="col-12 col-md-6 col-lg-4 p-3 mt-4">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="https://imgs.search.brave.com/rlQPWR9YOLUB173dSgMXcpGoddnlbqw27vDFt2aHIok/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9zMy1l/dS13ZXN0LTEuYW1h/em9uYXdzLmNvbS9t/aW9kb3R0b3JlLml0/L2RvY3Rvci80NTVk/ZmIvNDU1ZGZiNWQ1/MThjOTcyYTZkODAz/ZWExMjMxZDg4OTBf/bWVkaXVtX3NxdWFy/ZS5qcGc" alt="" class="img-fluid rounded-pill">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">NOMBRE DEL MEDICO</h5>
+                                <p class="card-text">ESPECIALIDAD</p>
+                                <p class="card-text"><small class="text-body-secondary">MD9999</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="col-12 col-md-6 col-lg-4 p-3 mt-4">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="https://imgs.search.brave.com/rlQPWR9YOLUB173dSgMXcpGoddnlbqw27vDFt2aHIok/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9zMy1l/dS13ZXN0LTEuYW1h/em9uYXdzLmNvbS9t/aW9kb3R0b3JlLml0/L2RvY3Rvci80NTVk/ZmIvNDU1ZGZiNWQ1/MThjOTcyYTZkODAz/ZWExMjMxZDg4OTBf/bWVkaXVtX3NxdWFy/ZS5qcGc" alt="" class="img-fluid rounded-pill">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">NOMBRE DEL MEDICO</h5>
+                                <p class="card-text">ESPECIALIDAD</p>
+                                <p class="card-text"><small class="text-body-secondary">MD9999</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="col-12 col-md-6 col-lg-4 p-3 mt-4">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="https://imgs.search.brave.com/rlQPWR9YOLUB173dSgMXcpGoddnlbqw27vDFt2aHIok/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9zMy1l/dS13ZXN0LTEuYW1h/em9uYXdzLmNvbS9t/aW9kb3R0b3JlLml0/L2RvY3Rvci80NTVk/ZmIvNDU1ZGZiNWQ1/MThjOTcyYTZkODAz/ZWExMjMxZDg4OTBf/bWVkaXVtX3NxdWFy/ZS5qcGc" alt="" class="img-fluid rounded-pill">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">NOMBRE DEL MEDICO</h5>
+                                <p class="card-text">ESPECIALIDAD</p>
+                                <p class="card-text"><small class="text-body-secondary">MD9999</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section> -->
     </main>
 
     <footer>
-        <div class="footer-top-bar">
-            <div class="social-links">
-                <ul>
-                    <li><a href="https://www.facebook.com/" target="_blank"><i class="bx bxl-facebook"></i></a></li>
-                    <li><a href="https://www.instagram.com/" target="_blank"><i class="bx bxl-instagram"></i></a>
-                    </li>
-                    <li><a href="https://www.linkedin.com/" target="_blank"><i class="bx bxl-linkedin"></i></a></li>
-                    <li><a href="" target="_blank"><i class="bx bxl-whatsapp"></i></a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="footer-middle">
-            <div class="footer-middle-left">
-                <div class="logo">
-                    <a href="index.html"><img src="scr/logo idwsa.png" alt="logo"></a>
+        <div class="container">
+            <div class="row mb-3 footer-top-bar">
+                <div class="col-12 text-center">
+                    <div class="social-links mt-1 ">
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item">
+                                <a href="https://www.facebook.com/" target="_blank">
+                                    <i class="bx bxl-facebook fs-3"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://www.instagram.com/" target="_blank">
+                                    <i class="bx bxl-instagram fs-3"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/" target="_blank">
+                                    <i class="bx bxl-linkedin fs-3"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="" target="_blank">
+                                    <i class="bx bxl-whatsapp fs-3"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <div class="footer-middle-right">
-                <ul>
-                    <li><i class='bx bxs-map'></i>Av. Libertador 1234, Buenos Aires, Argentina</li>
-                    <li><i class='bx bxs-phone'></i>+54 11 1234 5678</li>
-                    <li><i class='bx bxs-envelope'></i>contacto@empresaejemplo.com</li>
-                    <li><i class='bx bxs-time'></i>Lunes a Viernes: 9:00 - 18:00 | Sábado: 10:00 - 14:00</li>
-                    <li><i class='bx bxl-whatsapp'></i>+54 9 11 9876 5432</li>
-                </ul>
-            </div>
-        </div>
 
-        <div class="footer-bottom-bar">
-            <p>&copy; 2025 Centro Médico. Todos los derechos reservados.</p>
+            <div class="row mb-3 justify-content-between align-items-center">
+                <div class="col-lg-4 d-none d-lg-block text-center p-3">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="scr/logo idwsa.png" alt="logo" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6 text-center text-lg-start p-3">
+                    <ul class="list-unstyled mb-0">
+                        <li><i class='bx bxs-map'></i> Av. Libertador 1234, Buenos Aires, Argentina</li>
+                        <li><i class='bx bxs-phone'></i> +54 11 1234 5678</li>
+                        <li><i class='bx bxs-envelope'></i> contacto@empresaejemplo.com</li>
+                        <li><i class='bx bxs-time'></i> Lunes a Viernes: 9:00 - 18:00 | Sábado: 10:00 - 14:00</li>
+                        <li><i class='bx bxl-whatsapp'></i> +54 9 11 9876 5432</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 text-center mt-3">
+                    <p class="mb-0">&copy; 2025 Centro Médico. Todos los derechos reservados.</p>
+                </div>
+            </div>
         </div>
     </footer>
 
     <!-- Boostrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
     <!-- Custom JS -->
     <script src="scripts.js"></script>
+    <script src="menu.js"></script>
 </body>
 
 </html>
