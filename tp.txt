@@ -1,0 +1,14 @@
+pasar todas las imagenes a base64
+png a base64
+etiqueta src, url (descargarla y guardarla como base64)
+
+todo tipo de imagen a base64.
+'src' source
+
+carlos- tema profesionales
+caro- dashboard
+mati- javascript
+lucho- tarjetas medicos con los modales
+juanma- unir todos los videos,subirlos, y pasar imagenes a base64 (urgente)
+
+10/11 temas divididos para videos, 13/11 videos de todos para unir y subir.

@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+
 // Inicializar medicos desde localStorage o por defecto
 function inicializarMedicos() {
     const medicosGuardados = localStorage.getItem('medicos');
