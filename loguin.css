@@ -1,0 +1,43 @@
+/* Fondo general */
+body {
+    background-color: #f5f7fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Tarjeta del login */
+.card {
+    border-radius: 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Efecto hover sutil */
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Campos del formulario */
+.form-control {
+    border-radius: 10px;
+}
+
+/* Botón principal */
+.btn-primary {
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+/* Link inferior */
+.nav-link {
+    color: #00a2ff;
+    font-size: 0.9rem;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+/* Ícono SVG */
+.bi-person-circle {
+    color: #0056b3;
+}
