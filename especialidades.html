@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>medicos - Centro Médico IDW64</title>
+    <title>Especialidades - Centro Médico IDW64</title>
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -46,7 +46,6 @@
                             <li class="nav-item"><a class="nav-link fw-semibold" href="index.html">HOME</a></li>
                             <li class="nav-item"><a class="nav-link fw-semibold" href="institucional.html">INSTITUCIONAL<a></li>
                             <li class="nav-item"><a class="nav-link fw-semibold" href="contacto.html">CONTACTO</a></li>
-                            <!-- <li class="nav-item"><a class="nav-link fw-semibold" href="admin.html">ADMINISTRACIÓN</a></li> -->
                         </ul>
 
                         <ul class="navbar-nav flex-row me-3">
@@ -74,22 +73,22 @@
     <main class="container my-5">
         <div class="row mb-4">
             <div class="col">
-                <h2 class="mb-3"><i class="bx bx-user-circle me-2"></i>Gestión de Médicos</h2>
-                <p class="text-muted">Administra el personal médico del centro</p>
+                <h2 class="mb-3"><i class="bx bx-briefcase-alt me-2"></i>Gestión de Especialidades</h2>
+                <p class="text-muted">Administra las especialidades médicas del centro</p>
             </div>
         </div>
 
         <!-- Control Buttons -->
         <div class="row mb-3">
             <div class="col-12 d-flex justify-content-between align-items-center flex-wrap gap-2">
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#medicoModal" onclick="openCreateModal()">
-                    <i class="bx bx-plus-circle me-1"></i>Nuevo Médico
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#especialidadModal" onclick="openCreateModal()">
+                    <i class="bx bx-plus-circle me-1"></i>Nueva Especialidad
                 </button>
                 
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="showInactiveToggle" onchange="toggleInactive()">
                     <label class="form-check-label" for="showInactiveToggle">
-                        Mostrar médicos inactivos
+                        Mostrar especialidades inactivas
                     </label>
                 </div>
             </div>
@@ -100,16 +99,12 @@
             <div class="col-12">
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <table id="medicosTable" class="table table-striped table-hover">
+                        <div class="datatableContainer">
+                            <table id="especialidadesTable" class="table table-striped table-hover">
                                 <thead>
                                     <tr>
+                                        <th>ID</th>
                                         <th>Nombre</th>
-                                        <th>Apellido</th>
-                                        <th>Especialidad</th>
-                                        <th>Matrícula</th>
-                                        <th>Teléfono</th>
-                                        <th>Email</th>
                                         <th>Estado</th>
                                         <th>Acciones</th>
                                     </tr>
@@ -126,81 +121,33 @@
     </main>
 
     <!-- Modal para crear/editar -->
-    <div class="modal fade" id="medicoModal" tabindex="-1">
-        <div class="modal-dialog modal-lg">
+    <div class="modal fade" id="especialidadModal" tabindex="-1">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalTitle">Nuevo Médico</h5>
+                    <h5 class="modal-title" id="modalTitle">Nueva Especialidad</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="medicoForm">
-                        <input type="hidden" id="medicoId">
+                    <form id="especialidadForm">
+                        <input type="hidden" id="especialidadId">
                         
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="nombre" class="form-label">Nombre *</label>
-                                <input type="text" class="form-control" id="nombre" required>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="apellido" class="form-label">Apellido *</label>
-                                <input type="text" class="form-control" id="apellido" required>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="especialidad" class="form-label">Especialidad *</label>
-                                <select class="form-select" id="especialidad" required>
-                                    <option value="">Seleccione...</option>
-                                    <option value="Cardiología">Cardiología</option>
-                                    <option value="Neurología">Neurología</option>
-                                    <option value="Pediatría">Pediatría</option>
-                                    <option value="Medicina General">Medicina General</option>
-                                    <option value="Traumatología">Traumatología</option>
-                                    <option value="Ginecología">Ginecología</option>
-                                    <option value="Oftalmología">Oftalmología</option>
-                                    <option value="Dermatología">Dermatología</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="matricula" class="form-label">Matrícula *</label>
-                                <input type="text" class="form-control" id="matricula" placeholder="MD0000" required>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="telefono" class="form-label">Teléfono *</label>
-                                <input type="tel" class="form-control" id="telefono" placeholder="+54 11 1234-5678" required>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="email" class="form-label">Email *</label>
-                                <input type="email" class="form-control" id="email" required>
-                            </div>
-                        </div>
-
                         <div class="mb-3">
-                            <label for="imagen" class="form-label">URL de Imagen</label>
-                            <input type="url" class="form-control" id="imagen" placeholder="https://ejemplo.com/imagen.jpg">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="biografia" class="form-label">Biografía</label>
-                            <textarea class="form-control" id="biografia" rows="3"></textarea>
+                            <label for="nombre" class="form-label">Nombre *</label>
+                            <input type="text" class="form-control" id="nombre" required>
                         </div>
 
                         <div class="form-check mb-3">
                             <input class="form-check-input" type="checkbox" id="activo" checked>
                             <label class="form-check-label" for="activo">
-                                Médico activo
+                                Especialidad activa
                             </label>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" onclick="guardarMedico()">Guardar</button>
+                    <button type="button" class="btn btn-primary" onclick="guardarEspecialidad()">Guardar</button>
                 </div>
             </div>
         </div>
@@ -208,10 +155,10 @@
 
     <!-- Modal para ver detalles -->
     <div class="modal fade" id="viewModal" tabindex="-1">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Detalles del Médico</h5>
+                    <h5 class="modal-title">Detalles de la Especialidad</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body" id="viewModalBody">
@@ -295,7 +242,8 @@
     <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
     
     <!-- Script -->
-    <script src="admin.js"></script>
+    <script src="dataManager.js"></script>
+    <script src="especialidades.js"></script>
     <script src="menu.js"></script>
 
 </body>
