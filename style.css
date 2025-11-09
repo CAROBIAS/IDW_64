@@ -386,3 +386,8 @@ form button:hover {
             background-color: #f8d7da;
             color: #842029;
         }
+        
+.dashboard {
+    flex: 1;
+    padding: 40px 0;
+}
