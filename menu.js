@@ -9,6 +9,18 @@ document.addEventListener("DOMContentLoaded", () => {
     li.innerHTML = `<a class="nav-link fw-semibold" href="admin.html">ADMINISTRACIÓN</a>`;
     menu.appendChild(li);
   }
+  if (tipoUsuario === "admin") {
+    const li = document.createElement("li");
+    li.classList.add("nav-item");
+    li.innerHTML = `<a class="nav-link fw-semibold" href="turnos.html">TURNOS</a>`;
+    menu.appendChild(li);
+  }
+  if (tipoUsuario === "admin") {
+    const li = document.createElement("li");
+    li.classList.add("nav-item");
+    li.innerHTML = `<a class="nav-link fw-semibold" href="reservas.html">RESERVAS</a>`;
+    menu.appendChild(li);
+  }
 });
 
 document.addEventListener("DOMContentLoaded", () => {
