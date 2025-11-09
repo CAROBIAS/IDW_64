@@ -386,3 +386,106 @@ form button:hover {
             background-color: #f8d7da;
             color: #842029;
         }
+        
+.dashboard {
+    flex: 1;
+    padding: 40px 0;
+
+/* DataTables responsive */
+.datatableContainer {
+    width: 100%;
+    overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+    .datatableContainer {
+        max-width: 100vw;
+    }
+    
+    .datatableContainer table {
+        width: 100% !important;
+    }
+}
+
+/* Forzar ancho completo en tablas */
+.table {
+    width: 100% !important;
+}
+
+/* Obras Sociales Grid */
+.obras-sociales-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    justify-items: center;
+    padding: 10px;
+}
+
+.obra-social-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 150px;
+}
+
+.obra-social-item:hover {
+    border-color: #0d6efd;
+    box-shadow: 0 2px 8px rgba(13, 110, 253, 0.3);
+}
+
+.obra-social-item.selected {
+    border-color: #0d6efd;
+    background-color: rgba(13, 110, 253, 0.1);
+}
+
+.obra-social-item input[type="checkbox"] {
+    display: none;
+}
+
+.obra-social-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.obra-social-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+/* Vista de obras sociales en modal ver */
+.obras-sociales-view-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+    justify-items: center;
+    padding: 10px;
+}
+
+.obra-social-view-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 120px;
+}
+
+.obra-social-view-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    border: 1px solid #ddd;
+}
