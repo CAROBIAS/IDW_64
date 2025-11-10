@@ -1,149 +1,279 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const tipoUsuario = sessionStorage.getItem("tipoUsuario");
-
-  if (!tipoUsuario || tipoUsuario !== "admin") {
-    alert("Acceso denegado. Solo administradores pueden entrar.");
-    window.location.href = "index.html";
-  } else {
-    document.body.style.display = "block";
-  }
-});
-
-
-
-// Inicializar turnos desde localStorage o por defecto
-function inicializarTurnos() {
-    const turnosGuardados = localStorage.getItem('turnos');
-
-    if (turnosGuardados) {
-        // si ya ahy turnos guardados, los carga
-        return JSON.parse(turnosGuardados);
-    } else {
-        // si no, crea datos iniciales         
-        const turnosIniciales = [
-            { id: 1, id_medico: 1, fecha: "2025-11-10", hora: "09:00", disponible: true },
-            { id: 2, id_medico: 2, fecha: "2025-11-10", hora: "10:00", disponible: true },
-            { id: 3, id_medico: 3, fecha: "2025-11-11", hora: "11:30", disponible: false }
-        ];
-
-        // guardar los datos iniciales en localStorage
-        guardarTurnos(turnosIniciales);
-        return turnosIniciales;
-    }
-}
-
-// Guardar turnos en localStorage
-function guardarTurnos(turnosArray) {
-    localStorage.setItem('turnos', JSON.stringify(turnosArray));
-}
-
-// Cargar turnos desde localStorage
-function cargarTurnos() {
-    const turnosGuardados = localStorage.getItem('turnos');
-    return turnosGuardados ? JSON.parse(turnosGuardados) : [];
-}
-
-let turnos = inicializarTurnos();
-let tableTurnos;
+let turnos = [];
+let table;
 let showInactive = false;
 
-// Inicializar DataTable
-$(document).ready(function() {
-    loadTableTurnos();
+// Inicialización
+document.addEventListener("DOMContentLoaded", function () {
+  cargarDatos();
+  initDataTable();
+  document.body.style.display = "block";
 });
 
-function loadTableTurnos() {
-    if (tableTurnos) {
-        tableTurnos.destroy();
-    }
-    // Recargar turnos desde localStorage antes de mostrar
-    turnos = cargarTurnos();
-        
-    const medicos = JSON.parse(localStorage.getItem("medicos")) || [];
+// Cargar datos desde DataManager
+function cargarDatos() {
+  turnos = DataManager.getTurnos();
+}
 
-    // Preparar datos para DataTable (mostrando nombre+apellido en lugar de id_medico)
-    const turnos_medicos = turnos.map(turno => {
-        const medico = medicos.find(m => m.id === parseInt(turno.id_medico));
-        const nuevoTurno = { ...turno };
-        if (medico) {
-            nuevoTurno.id_medico = `${medico.nombre} ${medico.apellido}`;
-        } else {
-            // Si no lo encontró, deja un texto por defecto
-            nuevoTurno.id_medico = "Médico no encontrado";
-        }
-        return nuevoTurno;
-        });
-    
-    const data_turnos = showInactive ? turnos_medicos : turnos_medicos.filter(t => t.disponible);
+// Guardar datos en DataManager
+function guardarDatos() {
+  DataManager.saveTurnos(turnos);
+}
 
-    tableTurnos = $('#turnosTable').DataTable({
-        data: data_turnos,
-        columns: [            
-            { data: 'id_medico' },
-            { data: 'fecha' },
-            { data: 'hora' },
-            { 
-                data: 'disponible',
-                render: function(data) {
-                    return data ? '<span class="status-badge status-active">Disponible</span>' 
-                    : '<span class="status-badge status-inactive">No disponible</span>';
-                }
-            },
-            {
-                data: null,
-                orderable: false,
-                className: 'table-actions',
-                render: function(data) {
-                    return `
-                        <button class="btn btn-sm btn-info btn-action" onclick="verTurno(${data.id})" title="Ver">
+// Obtener especialidades desde DataManager (solo activas)
+function getEspecialidades() {
+  const todas = DataManager.getEspecialidades();
+  return todas.filter((e) => e.activo === true || e.activo === undefined);
+}
+
+// Obtener nombre de especialidad
+function getNombreEspecialidad(id) {
+  if (!id) return "Sin especialidad";
+  const especialidades = DataManager.getEspecialidades();
+  const esp = especialidades.find((e) => e.id === Number(id));
+  return esp ? esp.nombre : "N/A";
+}
+
+// Obtener nombres de especialidades (array)
+function getNombresEspecialidades(ids) {
+  if (!ids || ids.length === 0) return "Sin especialidad";
+  return ids.map((id) => getNombreEspecialidad(id)).join(", ");
+}
+
+// Obtener medicos desde DataManager (solo activos)
+function getMedicos() {
+  const todas = DataManager.getMedicos();
+  return todas.filter((m) => m.activo === true || m.activo === undefined);
+}
+
+// Obtener nombre del medico
+function getNombreMedico(id) {
+  if (!id) return "Desconosido";
+  const medicos = DataManager.getMedicos();
+  const med = medicos.find((m) => m.id === Number(id));
+  return med ? `${med.nombre} ${med.apellido}` : "N/A";
+}
+
+// Obtener especialidad del medico
+function getEspecialidadMedico(id) {
+  if (!id) return "Sin especialidad";
+  const medicos = DataManager.getMedicos();
+  const med = medicos.find((m) => m.id === Number(id));
+  return med ? med.especialidades[0] : "N/A";
+}
+
+// Obtener nombres de los medicos (array)
+function getNombresMedicos(ids) {
+  if (!ids || ids.length === 0) return "Desconosico";
+  return ids.map((id) => getNombreMedico(id)).join(", ");
+}
+
+// Inicializar DataTable
+function initDataTable() {
+  table = $("#turnosTable").DataTable({
+    data: getFilteredTurnos(),
+    columns: [
+      {
+        data: "id_medico",
+        render: function (data) {
+          return getNombreMedico(data);
+        },
+      },
+      {
+        data: "id_medico",
+        render: function (data) {
+          return getNombreEspecialidad(getEspecialidadMedico(data));
+        },
+      },
+      { data: "fecha" },
+      { data: "hora" },
+      
+      {
+        data: "disponible",
+        render: function (data) {
+          return data
+            ? '<span class="badge bg-success">Disponible</span>'
+            : '<span class="badge bg-secondary">No disponible</span>';
+        },
+      },
+      {
+        data: null,
+        orderable: false,
+        render: function (data, type, row) {
+          return `
+                        <button class="btn btn-sm btn-info" onclick="verTurno(${row.id})" title="Ver">
                             <i class="bx bx-show"></i>
                         </button>
-                        <button class="btn btn-sm btn-warning btn-action" onclick="editarTurno(${data.id})" title="Editar">
+                        <button class="btn btn-sm btn-warning" onclick="editarTurno(${row.id})" title="Editar">
                             <i class="bx bx-edit"></i>
                         </button>
-                        <button class="btn btn-sm btn-danger btn-action" onclick="eliminarTurno(${data.id})" title="Eliminar">
+                        <button class="btn btn-sm btn-danger" onclick="eliminarTurno(${row.id})" title="Eliminar">
                             <i class="bx bx-trash"></i>
                         </button>
                     `;
-                }
-            }
-        ],
-        language: {
-            url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json'
         },
-        responsive: true,
-        pageLength: 10,
-        autoWidth: false
-    });
+      },
+    ],
+    language: {
+      url: "https://cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json",
+    },
+    responsive: true,
+    pageLength: 10,
+    order: [[0, "asc"]],
+  });
 }
 
-function toggleInactive() {
-    showInactive = document.getElementById('showInactiveToggle').checked;
-    loadTableTurnos();
+// Obtener turnos filtrados
+function getFilteredTurnos() {
+  return turnos.filter((t) => showInactive || t.disponible);
 }
+
+// Toggle mostrar inactivos
+function toggleInactive() {
+  showInactive = document.getElementById("showInactiveToggle").checked;
+  actualizarTabla();
+}
+
+// Actualizar tabla
+function actualizarTabla() {
+  cargarDatos();
+  table.clear();
+  table.rows.add(getFilteredTurnos());
+  table.draw();
+}
+
+// Guardar turnos en localStorage
+// function guardarTurnos(turnosArray) {
+//     localStorage.setItem('turnos', JSON.stringify(turnosArray));
+// }
+
+// // Cargar turnos desde localStorage
+// function cargarTurnos() {
+//     const turnosGuardados = localStorage.getItem('centroMedico_turnos');
+//     return turnosGuardados ? JSON.parse(turnosGuardados) : [];
+// }
+
+// let turnos = inicializarTurnos();
+// let tableTurnos;
+// let showInactive = false;
+
+// Inicializar DataTable
+// $(document).ready(function() {
+//     loadTableTurnos();
+// });
+
+// function loadTableTurnos() {
+//     if (tableTurnos) {
+//         tableTurnos.destroy();
+//     }
+//     // Recargar turnos desde localStorage antes de mostrar
+//     turnos = cargarTurnos();
+        
+//     const medicos = JSON.parse(localStorage.getItem("centroMedico_medicos")) || [];
+
+//     // Preparar datos para DataTable (mostrando nombre+apellido en lugar de id_medico)
+//     const turnos_medicos = turnos.map(turno => {
+//         const medico = medicos.find(m => m.id === parseInt(turno.id_medico));
+//         const nuevoTurno = { ...turno };
+//         if (medico) {
+//             nuevoTurno.id_medico = `${medico.nombre} ${medico.apellido}`;
+//         } else {
+//             // Si no lo encontró, deja un texto por defecto
+//             nuevoTurno.id_medico = "Médico no encontrado";
+//         }
+//         return nuevoTurno;
+//         });
+    
+//     const data_turnos = showInactive ? turnos_medicos : turnos_medicos.filter(t => t.disponible);
+
+//     tableTurnos = $('#turnosTable').DataTable({
+//         data: data_turnos,
+//         columns: [            
+//             { data: 'id_medico' },
+//             { data: 'fecha' },
+//             { data: 'hora' },
+//             { 
+//                 data: 'disponible',
+//                 render: function(data) {
+//                     return data ? '<span class="status-badge status-active">Disponible</span>' 
+//                     : '<span class="status-badge status-inactive">No disponible</span>';
+//                 }
+//             },
+//             {
+//                 data: null,
+//                 orderable: false,
+//                 className: 'table-actions',
+//                 render: function(data) {
+//                     return `
+//                         <button class="btn btn-sm btn-info btn-action" onclick="verTurno(${data.id})" title="Ver">
+//                             <i class="bx bx-show"></i>
+//                         </button>
+//                         <button class="btn btn-sm btn-warning btn-action" onclick="editarTurno(${data.id})" title="Editar">
+//                             <i class="bx bx-edit"></i>
+//                         </button>
+//                         <button class="btn btn-sm btn-danger btn-action" onclick="eliminarTurno(${data.id})" title="Eliminar">
+//                             <i class="bx bx-trash"></i>
+//                         </button>
+//                     `;
+//                 }
+//             }
+//         ],
+//         language: {
+//             url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json'
+//         },
+//         responsive: true,
+//         pageLength: 10,
+//         autoWidth: false
+//     });
+// }
+
+// function toggleInactive() {
+//     showInactive = document.getElementById('showInactiveToggle').checked;
+//     loadTableTurnos();
+// }
 
 // Abrir modal para crear
 function openCreateTurnoModal() {
     document.getElementById('modalTitle').textContent = 'Agregar Turno';
     document.getElementById('turnoForm').reset();
-    document.getElementById('id_medico').value = '';
+    document.getElementById('turnoId').value = '';
     document.getElementById('disponible').checked = true;
-}
+    
+    // Cargar especialidades
+    const especialidades = getEspecialidades();
+    const selectEspecialidad = document.getElementById('especialidad');
+    console.log(especialidades)
+    
+    selectEspecialidad.innerHTML = '<option value="">-- Seleccione una especialidad --</option>';
+    
+    for (let esp of especialidades) {
+        const option = document.createElement('option');
+        option.value = esp.id;
+        option.textContent = esp.nombre;
+        selectEspecialidad.appendChild(option);
+    }
+    
+    // Dejar el combo de médicos vacío hasta que se seleccione una especialidad
+    document.getElementById('id_medico').innerHTML = '<option value="">-- Primero seleccione una especialidad --</option>';
+} 
 
 // Ver turno en modal 
 function verTurno(id) {
-    turnos = cargarTurnos();
-    const turno = turnos.find(t => t.id === id);
+    cargarDatos()    
+    const turno = turnos.find(t => Number(t.id) === Number(id));
     if (!turno) return;
 
-    const medicos = JSON.parse(localStorage.getItem("medicos")) || [];
+    const medicos = getMedicos();
     const medico = medicos.find(m => Number(m.id) === Number(turno.id_medico));
+
+    const especialidades = getEspecialidades()
+    const especialidad = especialidades.find(e => Number(e.id) === Number(medico.especialidades[0]))
 
     const content = `
         <div class="row">
             <div class="col-12">
                 <p><strong>ID:</strong> ${turno.id}</p>
                 <p><strong>Médico:</strong> ${medico ? medico.nombre + ' ' + medico.apellido : 'Desconocido'}</p>
+                <p><strong>Espacialidad:</strong> ${especialidad ? especialidad.nombre : 'Desconocido'}</p>
                 <p><strong>Fecha:</strong> ${turno.fecha}</p>
                 <p><strong>Hora:</strong> ${turno.hora}</p>
                 <p><strong>Disponible:</strong> ${turno.disponible ? 'Sí' : 'No'}</p>
@@ -157,22 +287,80 @@ function verTurno(id) {
 
 // Editar turno (carga valores en el formulario y cambia comportamiento del botón)
 function editarTurno(id) {
-    turnos = cargarTurnos();
+    cargarDatos();
     const turno = turnos.find(t => t.id === id);
     if (!turno) return;
    
     document.getElementById('modalTitle').textContent = 'Editar Turno';
     document.getElementById('turnoId').value = turno.id;
-    document.getElementById('id_medico').value = turno.id_medico;
     document.getElementById('fecha').value = turno.fecha;
     document.getElementById('hora').value = turno.hora;
     document.getElementById('disponible').checked = turno.disponible;
-    
-    
 
-    // abrir modal
+    // Cargar especialidades
+    const especialidades = getEspecialidades();
+    const selectEspecialidad = document.getElementById('especialidad');
+    
+    selectEspecialidad.innerHTML = '<option value="">-- Seleccione una especialidad --</option>';
+    
+    for (let esp of especialidades) {
+        const option = document.createElement('option');
+        option.value = esp.id;
+        option.textContent = esp.nombre;
+        selectEspecialidad.appendChild(option);
+    }
+    
+    // Encontrar el médico actual del turno
+    const medicos = getMedicos();
+    const medicoActual = medicos.find(m => m.id === Number(turno.id_medico));
+    
+    if (medicoActual) {
+        // Pre-seleccionar la especialidad del médico actual
+        const especialidadId = medicoActual.especialidades[0];
+        document.getElementById('especialidad').value = especialidadId;
+        
+        // Cargar médicos de esa especialidad
+        const selectMedico = document.getElementById('id_medico');
+        selectMedico.innerHTML = '<option value="">-- Seleccione un médico --</option>';
+        
+        for (let medico of medicos) {
+            if (medico.especialidades && medico.especialidades.includes(Number(especialidadId))) {
+                const option = document.createElement('option');
+                option.value = medico.id;
+                option.textContent = `${medico.nombre} ${medico.apellido}`;
+                selectMedico.appendChild(option);
+            }
+        }
+        
+        // Pre-seleccionar el médico actual
+        selectMedico.value = turno.id_medico;
+    }
+
+    // Abrir modal
     new bootstrap.Modal(document.getElementById('turnoModal')).show();
 }
+
+// Event listener para cuando cambie la especialidad
+document.getElementById('especialidad').addEventListener('change', function() {
+    const especialidadId = this.value;
+    const selectMedico = document.getElementById('id_medico');
+    
+    if (especialidadId) {
+        const medicos = getMedicos();
+        selectMedico.innerHTML = '<option value="">-- Seleccione un médico --</option>';
+        
+        for (let medico of medicos) {
+            if (medico.especialidades && medico.especialidades.includes(Number(especialidadId))) {
+                const option = document.createElement('option');
+                option.value = medico.id;
+                option.textContent = `${medico.nombre} ${medico.apellido}`;
+                selectMedico.appendChild(option);
+            }
+        }
+    } else {
+        selectMedico.innerHTML = '<option value="">-- Primero seleccione una especialidad --</option>';
+    }
+});
 
 function guardarTurno(){
     const form = document.getElementById('turnoForm');
@@ -181,7 +369,7 @@ function guardarTurno(){
         return;
     }
 
-    turnos = cargarTurnos();
+    cargarDatos();
     
     const id = document.getElementById('turnoId').value;
     const turnoData = {
@@ -199,17 +387,17 @@ function guardarTurno(){
         turnos.push({id: newId, ...turnoData});
     }
 
-    guardarTurnos(turnos);
+    guardarDatos();    
 
     bootstrap.Modal.getInstance(document.getElementById('turnoModal')).hide();
-    loadTableTurnos();
+    actualizarTabla();
 
     alert(id ? 'Turno actualizado exitosamente' : 'Turno creado exitosamente');
 }
 
 // Eliminar turno
 function eliminarTurno(id) {
-    turnos = cargarTurnos();
+    cargarDatos();
     const turno = turnos.find(t => t.id === id);
     if (!turno) return;
 
@@ -217,9 +405,9 @@ function eliminarTurno(id) {
         const index = turnos.findIndex(t => t.id === id);
         turnos[index].disponible = false;
 
-        guardarTurnos(turnos);
+        guardarDatos(); 
 
-        loadTableTurnos();
+        actualizarTabla();
 
         alert('Turno eliminado exitosamente');
     }
