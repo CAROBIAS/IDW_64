@@ -34,10 +34,8 @@ function toggleInactive() {
 function initDataTable() {
     table = $('#obrasSocialesTable').DataTable({
         data: getFilteredObrasSociales(),
-        columns: [
-            { data: 'id' },
-            { data: 'nombre' },
-            { data: 'descripcion' },
+        columns: [            
+            { data: 'nombre' },            
             { 
                 data: 'porcentaje',
                 render: function(data) {
@@ -72,6 +70,7 @@ function initDataTable() {
         language: {
             url: 'https://cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json'
         },
+        autoWidth: false,
         responsive: true,
         order: [[0, 'asc']]
     });
