@@ -607,3 +607,14 @@ table.dataTable tbody td {
         padding: 2px 5px;
     }
 }
+
+#medicosTable th:last-child,
+#medicosTable td:last-child,
+#obrasSocialesTable th:last-child,
+#obrasSocialesTable td:last-child, 
+#especialidadesTable th:last-child,
+#especialidadesTable td:last-child 
+#turnosTable th:last-child,
+#turnosTable td:last-child{
+  white-space: nowrap !important;
+}
