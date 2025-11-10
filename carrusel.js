@@ -1,4 +1,4 @@
-// carrusel.js - Carrusel de Obras Sociales desde LocalStorage
+// Carrusel de Obras Sociales desde LocalStorage
 
 document.addEventListener('DOMContentLoaded', function() {
     cargarCarruselObrasSociales();
