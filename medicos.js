@@ -171,7 +171,7 @@ function cargarObrasSociales() {
 
     div.innerHTML = `
             <input class="form-check-input obra-social-check" type="checkbox" value="${os.id}" id="os_${os.id}">
-            <img src="${imagenSrc}" alt="${os.nombre}" class="obra-social-img">
+            <img src="${imagenSrc}" alt="${os.nombre}" class="obra-social-img" style="object-fit: contain;">
             <span class="obra-social-name">${os.nombre}</span>
         `;
     container.appendChild(div);
@@ -330,7 +330,7 @@ function viewMedico(id) {
         if (imagenSrc) {
           obrasSocialesHtml += `
                         <div class="obra-social-view-item">
-                            <img src="${imagenSrc}" alt="${nombre}" class="obra-social-view-img">
+                            <img src="${imagenSrc}" alt="${nombre}" class="obra-social-view-img img-fluid w-100" style="object-fit: contain;">
                             <span class="obra-social-name">${nombre}</span>
                         </div>
                     `;
