@@ -34,7 +34,7 @@ function cargarTablaUsuarios() {
                 render: row => `${row.firstName} ${row.lastName}`
             },
             { data: 'age' },
-            { data: 'username' },            
+            { data: 'username' },
             { data: 'address.country' },
             { data: 'role' },
             {
@@ -126,8 +126,8 @@ function verUsuario(id) {
                 const isHidden = real.style.display === "none";
                 real.style.display = isHidden ? "inline" : "none";
                 hidden.style.display = isHidden ? "none" : "inline";
-                btn.innerHTML = isHidden 
-                    ? '<i class="bx bx-hide"></i>' 
+                btn.innerHTML = isHidden
+                    ? '<i class="bx bx-hide"></i>'
                     : '<i class="bx bx-show"></i>';
             });
         }

@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="style.css">
 
     <!-- Favicon -->
-    <link rel="icon" href="./scr/logo idwsa.png">
+    <link rel="icon" href="./src/logo idwsa.png">
 </head>
 
 <body style="display: none;">
@@ -28,7 +28,7 @@
         <div class="header-container">
             <nav class="navbar navbar-expand-lg navbar-light ">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="index.html"><img src="scr/logo idwsa.png" alt="logo"
+                    <a class="navbar-brand" href="index.html"><img src="src/logo idwsa.png" alt="logo"
                             style="height:40px;"></a>
                     <button class="navbar-toggler fw-bold" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
@@ -37,15 +37,20 @@
                     <div class="collapse navbar-collapse" id="navbarContent">
                         <ul class="navbar-nav me-auto mb-2 mb-md-0" id="menuPrincipal">
                             <li class="nav-item"><a class="nav-link fw-semibold" href="index.html">HOME</a></li>
-                            <li class="nav-item"><a class="nav-link fw-semibold" href="institucional.html">INSTITUCIONAL</a></li>
+                            <li class="nav-item"><a class="nav-link fw-semibold"
+                                    href="institucional.html">INSTITUCIONAL</a></li>
                             <li class="nav-item"><a class="nav-link fw-semibold" href="contacto.html">CONTACTO</a></li>
                         </ul>
 
                         <ul class="navbar-nav flex-row me-3">
-                            <li class="nav-item me-2"><a class="nav-link" href="https://www.facebook.com/" target="_blank"><i class="bx bxl-facebook fw-bold"></i></a></li>
-                            <li class="nav-item me-2"><a class="nav-link" href="https://www.instagram.com/" target="_blank"><i class="bx bxl-instagram fw-bold"></i></a></li>
-                            <li class="nav-item me-2"><a class="nav-link" href="https://www.linkedin.com/" target="_blank"><i class="bx bxl-linkedin fw-bold"></i></a></li>
-                            <li class="nav-item"><a class="nav-link" href="" target="_blank"><i class="bx bxl-whatsapp fw-bold"></i></a></li>
+                            <li class="nav-item me-2"><a class="nav-link" href="https://www.facebook.com/"
+                                    target="_blank"><i class="bx bxl-facebook fw-bold"></i></a></li>
+                            <li class="nav-item me-2"><a class="nav-link" href="https://www.instagram.com/"
+                                    target="_blank"><i class="bx bxl-instagram fw-bold"></i></a></li>
+                            <li class="nav-item me-2"><a class="nav-link" href="https://www.linkedin.com/"
+                                    target="_blank"><i class="bx bxl-linkedin fw-bold"></i></a></li>
+                            <li class="nav-item"><a class="nav-link" href="https://www.whatsapp.com/?lang=es/"
+                                    target="_blank"><i class="bx bxl-whatsapp fw-bold"></i></a></li>
                         </ul>
 
                         <div class="d-flex me-3" id="loginContainer"></div>
@@ -62,7 +67,7 @@
                 <h2 class="mb-3"><i class="bx bx-list-check me-2"></i>Lista de Reservas</h2>
             </div>
         </div>
-        
+
         <!-- DataTable -->
         <div class="row">
             <div class="col-12">
@@ -76,7 +81,7 @@
                                         <th>turno</th>
                                         <th>medico</th>
                                         <th>especialidad</th>
-                                        <th>valor final</th>                                        
+                                        <th>valor final</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -92,61 +97,31 @@
     </main>
 
     <!-- Modal Ver Reserva -->
-<div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="viewModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header bg-info text-white">
-                <h5 class="modal-title" id="viewModalLabel">
-                    <i class="bx bx-info-circle me-2"></i>Detalles de la Reserva
-                </h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" id="viewModalBody">
-                <!-- Contenido cargado dinámicamente por JavaScript -->
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                    <i class="bx bx-x me-1"></i>Cerrar
-                </button>
+    <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="viewModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h5 class="modal-title" id="viewModalLabel">
+                        <i class="bx bx-info-circle me-2"></i>Detalles de la Reserva
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="viewModalBody">
+                    <!-- Contenido cargado dinámicamente por JavaScript -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="bx bx-x me-1"></i>Cerrar
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     <!-- Footer -->
     <footer>
-        <!--  exactamente igual que en medicos.html -->
         <div class="container">
-            <div class="row mb-3 footer-top-bar">
-                <div class="col-12 text-center">
-                    <div class="social-links mt-1 ">
-                        <ul class="list-inline mb-0">
-                            <li class="list-inline-item"><a href="https://www.facebook.com/" target="_blank"><i class="bx bxl-facebook fs-3"></i></a></li>
-                            <li class="list-inline-item"><a href="https://www.instagram.com/" target="_blank"><i class="bx bxl-instagram fs-3"></i></a></li>
-                            <li class="list-inline-item"><a href="https://www.linkedin.com/" target="_blank"><i class="bx bxl-linkedin fs-3"></i></a></li>
-                            <li class="list-inline-item"><a href="" target="_blank"><i class="bx bxl-whatsapp fs-3"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="row mb-3 justify-content-between align-items-center">
-                <div class="col-lg-4 d-none d-lg-block text-center p-3">
-                    <div class="logo">
-                        <a href="index.html">
-                            <img src="scr/logo idwsa.png" alt="logo" class="img-fluid">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-6 text-center text-lg-start p-3">
-                    <ul class="list-unstyled mb-0">
-                        <li><i class='bx bxs-map'></i> Av. Libertador 1234, Buenos Aires, Argentina</li>
-                        <li><i class='bx bxs-phone'></i> +54 11 1234 5678</li>
-                        <li><i class='bx bxs-envelope'></i> contacto@empresaejemplo.com</li>
-                        <li><i class='bx bxs-time'></i> Lunes a Viernes: 9:00 - 18:00 | Sábado: 10:00 - 14:00</li>
-                        <li><i class='bx bxl-whatsapp'></i> +54 9 11 9876 5432</li>
-                    </ul>
-                </div>
-            </div>
             <div class="row">
                 <div class="col-12 text-center mt-3">
                     <p class="mb-0">&copy; 2025 Centro Médico. Todos los derechos reservados.</p>
@@ -166,4 +141,5 @@
     <script src="menu.js"></script>
     <script src="reservas.js"></script>
 </body>
+
 </html>

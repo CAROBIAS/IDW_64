@@ -10,7 +10,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
     <!-- Custom ico -->
-    <link rel="icon" href="./scr/logo idwsa.png">
+    <link rel="icon" href="./src/logo idwsa.png">
     <title>Centro Médico IDW64</title>
     <!-- box icons -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
@@ -30,7 +30,7 @@
                 <div class="container-fluid">
 
 
-                    <a class="navbar-brand" href="index.html"><img src="scr/logo idwsa.png" alt="logo"
+                    <a class="navbar-brand" href="index.html"><img src="src/logo idwsa.png" alt="logo"
                             style="height:40px;"></a>
 
                     <button class="navbar-toggler fw-bold" type="button" data-bs-toggle="collapse"
@@ -54,8 +54,8 @@
                                     target="_blank"><i class="bx bxl-instagram fw-bold"></i></a></li>
                             <li class="nav-item me-2"><a class="nav-link" href="https://www.linkedin.com/"
                                     target="_blank"><i class="bx bxl-linkedin fw-bold"></i></a></li>
-                            <li class="nav-item"><a class="nav-link" href="" target="_blank"><i
-                                        class="bx bxl-whatsapp fw-bold"></i></a></li>
+                            <li class="nav-item"><a class="nav-link" href="https://www.whatsapp.com/?lang=es/"
+                                    target="_blank"><i class="bx bxl-whatsapp fw-bold"></i></a></li>
                         </ul>
 
                         <div class="d-flex me-3" id="loginContainer">
@@ -87,10 +87,24 @@
 
     <main>
 
+
         <section class="tarjetas">
             <h2 class="text-center text-uppercase text-decoration-underline my-5">Nuestros Médicos</h2>
+            <!-- filtros -->
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <select id="filtroEspecialidad" class="form-select">
+                        <option value="">-- Filtrar por especialidad --</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <select id="filtroObraSocial" class="form-select">
+                        <option value="">-- Filtrar por obra social --</option>
+                    </select>
+                </div>
+            </div>
             <div class="row justify-content-center" id="tarjetas-container">
-               
+
             </div>
         </section>
     </main>
@@ -117,7 +131,7 @@
                                 </a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="" target="_blank">
+                                <a href="https://www.whatsapp.com/?lang=es/" target="_blank">
                                     <i class="bx bxl-whatsapp fs-3"></i>
                                 </a>
                             </li>
@@ -130,7 +144,7 @@
                 <div class="col-lg-4 d-none d-lg-block text-center p-3">
                     <div class="logo">
                         <a href="index.html">
-                            <img src="scr/logo idwsa.png" alt="logo" class="img-fluid">
+                            <img src="src/logo idwsa.png" alt="logo" class="img-fluid">
                         </a>
                     </div>
                 </div>

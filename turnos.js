@@ -86,7 +86,7 @@ function initDataTable() {
       },
       { data: "fecha" },
       { data: "hora" },
-      
+
       {
         data: "disponible",
         render: function (data) {
@@ -143,42 +143,42 @@ function actualizarTabla() {
 
 // Abrir modal para crear
 function openCreateTurnoModal() {
-    document.getElementById('modalTitle').textContent = 'Agregar Turno';
-    document.getElementById('turnoForm').reset();
-    document.getElementById('turnoId').value = '';
-    document.getElementById('disponible').checked = true;
-    
-    // Cargar especialidades
-    const especialidades = getEspecialidades();
-    const selectEspecialidad = document.getElementById('especialidad');
-    console.log(especialidades)
-    
-    selectEspecialidad.innerHTML = '<option value="">-- Seleccione una especialidad --</option>';
-    
-    for (let esp of especialidades) {
-        const option = document.createElement('option');
-        option.value = esp.id;
-        option.textContent = esp.nombre;
-        selectEspecialidad.appendChild(option);
-    }
-    
-    // Dejar el combo de médicos vacío hasta que se seleccione una especialidad
-    document.getElementById('id_medico').innerHTML = '<option value="">-- Primero seleccione una especialidad --</option>';
-} 
+  document.getElementById('modalTitle').textContent = 'Agregar Turno';
+  document.getElementById('turnoForm').reset();
+  document.getElementById('turnoId').value = '';
+  document.getElementById('disponible').checked = true;
+
+  // Cargar especialidades
+  const especialidades = getEspecialidades();
+  const selectEspecialidad = document.getElementById('especialidad');
+  console.log(especialidades)
+
+  selectEspecialidad.innerHTML = '<option value="">-- Seleccione una especialidad --</option>';
+
+  for (let esp of especialidades) {
+    const option = document.createElement('option');
+    option.value = esp.id;
+    option.textContent = esp.nombre;
+    selectEspecialidad.appendChild(option);
+  }
+
+  // Dejar el combo de médicos vacío hasta que se seleccione una especialidad
+  document.getElementById('id_medico').innerHTML = '<option value="">-- Primero seleccione una especialidad --</option>';
+}
 
 // Ver turno en modal 
 function verTurno(id) {
-    cargarDatos()    
-    const turno = turnos.find(t => Number(t.id) === Number(id));
-    if (!turno) return;
+  cargarDatos()
+  const turno = turnos.find(t => Number(t.id) === Number(id));
+  if (!turno) return;
 
-    const medicos = getMedicos();
-    const medico = medicos.find(m => Number(m.id) === Number(turno.id_medico));
+  const medicos = getMedicos();
+  const medico = medicos.find(m => Number(m.id) === Number(turno.id_medico));
 
-    const especialidades = getEspecialidades()
-    const especialidad = especialidades.find(e => Number(e.id) === Number(medico.especialidades[0]))
+  const especialidades = getEspecialidades()
+  const especialidad = especialidades.find(e => Number(e.id) === Number(medico.especialidades[0]))
 
-    const content = `
+  const content = `
         <div class="row">
             <div class="col-12">
                 <p><strong>ID:</strong> ${turno.id}</p>
@@ -191,134 +191,134 @@ function verTurno(id) {
         </div>
     `;
 
-    document.getElementById('viewModalBody').innerHTML = content;
-    new bootstrap.Modal(document.getElementById('viewModal')).show();
+  document.getElementById('viewModalBody').innerHTML = content;
+  new bootstrap.Modal(document.getElementById('viewModal')).show();
 }
 
 // Editar turno (carga valores en el formulario y cambia comportamiento del botón)
 function editarTurno(id) {
-    cargarDatos();
-    const turno = turnos.find(t => t.id === id);
-    if (!turno) return;
-   
-    document.getElementById('modalTitle').textContent = 'Editar Turno';
-    document.getElementById('turnoId').value = turno.id;
-    document.getElementById('fecha').value = turno.fecha;
-    document.getElementById('hora').value = turno.hora;
-    document.getElementById('disponible').checked = turno.disponible;
+  cargarDatos();
+  const turno = turnos.find(t => t.id === id);
+  if (!turno) return;
 
-    // Cargar especialidades
-    const especialidades = getEspecialidades();
-    const selectEspecialidad = document.getElementById('especialidad');
-    
-    selectEspecialidad.innerHTML = '<option value="">-- Seleccione una especialidad --</option>';
-    
-    for (let esp of especialidades) {
+  document.getElementById('modalTitle').textContent = 'Editar Turno';
+  document.getElementById('turnoId').value = turno.id;
+  document.getElementById('fecha').value = turno.fecha;
+  document.getElementById('hora').value = turno.hora;
+  document.getElementById('disponible').checked = turno.disponible;
+
+  // Cargar especialidades
+  const especialidades = getEspecialidades();
+  const selectEspecialidad = document.getElementById('especialidad');
+
+  selectEspecialidad.innerHTML = '<option value="">-- Seleccione una especialidad --</option>';
+
+  for (let esp of especialidades) {
+    const option = document.createElement('option');
+    option.value = esp.id;
+    option.textContent = esp.nombre;
+    selectEspecialidad.appendChild(option);
+  }
+
+  // Encontrar el médico actual del turno
+  const medicos = getMedicos();
+  const medicoActual = medicos.find(m => m.id === Number(turno.id_medico));
+
+  if (medicoActual) {
+    // Pre-seleccionar la especialidad del médico actual
+    const especialidadId = medicoActual.especialidades[0];
+    document.getElementById('especialidad').value = especialidadId;
+
+    // Cargar médicos de esa especialidad
+    const selectMedico = document.getElementById('id_medico');
+    selectMedico.innerHTML = '<option value="">-- Seleccione un médico --</option>';
+
+    for (let medico of medicos) {
+      if (medico.especialidades && medico.especialidades.includes(Number(especialidadId))) {
         const option = document.createElement('option');
-        option.value = esp.id;
-        option.textContent = esp.nombre;
-        selectEspecialidad.appendChild(option);
-    }
-    
-    // Encontrar el médico actual del turno
-    const medicos = getMedicos();
-    const medicoActual = medicos.find(m => m.id === Number(turno.id_medico));
-    
-    if (medicoActual) {
-        // Pre-seleccionar la especialidad del médico actual
-        const especialidadId = medicoActual.especialidades[0];
-        document.getElementById('especialidad').value = especialidadId;
-        
-        // Cargar médicos de esa especialidad
-        const selectMedico = document.getElementById('id_medico');
-        selectMedico.innerHTML = '<option value="">-- Seleccione un médico --</option>';
-        
-        for (let medico of medicos) {
-            if (medico.especialidades && medico.especialidades.includes(Number(especialidadId))) {
-                const option = document.createElement('option');
-                option.value = medico.id;
-                option.textContent = `${medico.nombre} ${medico.apellido}`;
-                selectMedico.appendChild(option);
-            }
-        }
-        
-        // Pre-seleccionar el médico actual
-        selectMedico.value = turno.id_medico;
+        option.value = medico.id;
+        option.textContent = `${medico.nombre} ${medico.apellido}`;
+        selectMedico.appendChild(option);
+      }
     }
 
-    // Abrir modal
-    new bootstrap.Modal(document.getElementById('turnoModal')).show();
+    // Pre-seleccionar el médico actual
+    selectMedico.value = turno.id_medico;
+  }
+
+  // Abrir modal
+  new bootstrap.Modal(document.getElementById('turnoModal')).show();
 }
 
 // Event listener para cuando cambie la especialidad
-document.getElementById('especialidad').addEventListener('change', function() {
-    const especialidadId = this.value;
-    const selectMedico = document.getElementById('id_medico');
-    
-    if (especialidadId) {
-        const medicos = getMedicos();
-        selectMedico.innerHTML = '<option value="">-- Seleccione un médico --</option>';
-        
-        for (let medico of medicos) {
-            if (medico.especialidades && medico.especialidades.includes(Number(especialidadId))) {
-                const option = document.createElement('option');
-                option.value = medico.id;
-                option.textContent = `${medico.nombre} ${medico.apellido}`;
-                selectMedico.appendChild(option);
-            }
-        }
-    } else {
-        selectMedico.innerHTML = '<option value="">-- Primero seleccione una especialidad --</option>';
+document.getElementById('especialidad').addEventListener('change', function () {
+  const especialidadId = this.value;
+  const selectMedico = document.getElementById('id_medico');
+
+  if (especialidadId) {
+    const medicos = getMedicos();
+    selectMedico.innerHTML = '<option value="">-- Seleccione un médico --</option>';
+
+    for (let medico of medicos) {
+      if (medico.especialidades && medico.especialidades.includes(Number(especialidadId))) {
+        const option = document.createElement('option');
+        option.value = medico.id;
+        option.textContent = `${medico.nombre} ${medico.apellido}`;
+        selectMedico.appendChild(option);
+      }
     }
+  } else {
+    selectMedico.innerHTML = '<option value="">-- Primero seleccione una especialidad --</option>';
+  }
 });
 
-function guardarTurno(){
-    const form = document.getElementById('turnoForm');
-    if (!form.checkValidity()){
-        form.reportValidity();
-        return;
-    }
+function guardarTurno() {
+  const form = document.getElementById('turnoForm');
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
 
-    cargarDatos();
-    
-    const id = document.getElementById('turnoId').value;
-    const turnoData = {
-        id_medico: document.getElementById('id_medico').value,
-        fecha: document.getElementById('fecha').value,
-        hora: document.getElementById('hora').value,
-        disponible: document.getElementById('disponible').checked
-    };
+  cargarDatos();
 
-    if (id) {
-        const index = turnos.findIndex(t => t.id === parseInt(id));
-        turnos[index] = { ...turnos[index], ...turnoData };
-    }else{
-        const newId = turnos.length > 0 ? Math.max(...turnos.map(t => t.id)) + 1: 1;
-        turnos.push({id: newId, ...turnoData});
-    }
+  const id = document.getElementById('turnoId').value;
+  const turnoData = {
+    id_medico: document.getElementById('id_medico').value,
+    fecha: document.getElementById('fecha').value,
+    hora: document.getElementById('hora').value,
+    disponible: document.getElementById('disponible').checked
+  };
 
-    guardarDatos();    
+  if (id) {
+    const index = turnos.findIndex(t => t.id === parseInt(id));
+    turnos[index] = { ...turnos[index], ...turnoData };
+  } else {
+    const newId = turnos.length > 0 ? Math.max(...turnos.map(t => t.id)) + 1 : 1;
+    turnos.push({ id: newId, ...turnoData });
+  }
 
-    bootstrap.Modal.getInstance(document.getElementById('turnoModal')).hide();
-    actualizarTabla();
+  guardarDatos();
 
-    alert(id ? 'Turno actualizado exitosamente' : 'Turno creado exitosamente');
+  bootstrap.Modal.getInstance(document.getElementById('turnoModal')).hide();
+  actualizarTabla();
+
+  alert(id ? 'Turno actualizado exitosamente' : 'Turno creado exitosamente');
 }
 
 // Eliminar turno
 function eliminarTurno(id) {
-    cargarDatos();
-    const turno = turnos.find(t => t.id === id);
-    if (!turno) return;
+  cargarDatos();
+  const turno = turnos.find(t => t.id === id);
+  if (!turno) return;
 
-    if (confirm(`¿Está seguro que desea eliminar el turno ID ${turno.id}?`)) {
-        const index = turnos.findIndex(t => t.id === id);
-        turnos[index].disponible = false;
+  if (confirm(`¿Está seguro que desea eliminar el turno ID ${turno.id}?`)) {
+    const index = turnos.findIndex(t => t.id === id);
+    turnos[index].disponible = false;
 
-        guardarDatos(); 
+    guardarDatos();
 
-        actualizarTabla();
+    actualizarTabla();
 
-        alert('Turno eliminado exitosamente');
-    }
+    alert('Turno eliminado exitosamente');
+  }
 }

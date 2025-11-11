@@ -3,7 +3,7 @@ let table;
 let showInactive = false;
 
 // Inicialización
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     cargarDatos();
     initDataTable();
     document.body.style.display = 'block';
@@ -34,25 +34,25 @@ function toggleInactive() {
 function initDataTable() {
     table = $('#obrasSocialesTable').DataTable({
         data: getFilteredObrasSociales(),
-        columns: [            
-            { data: 'nombre' },            
-            { 
+        columns: [
+            { data: 'nombre' },
+            {
                 data: 'porcentaje',
-                render: function(data) {
+                render: function (data) {
                     return data ? parseFloat(data).toFixed(2) + '%' : '0%';
                 }
             },
             {
                 data: 'activo',
-                render: function(data) {
-                    return data 
+                render: function (data) {
+                    return data
                         ? '<span class="badge bg-success">Activa</span>'
                         : '<span class="badge bg-secondary">Inactiva</span>';
                 }
             },
             {
                 data: null,
-                render: function(data, type, row) {
+                render: function (data, type, row) {
                     return `
                         <button class="btn btn-sm btn-info" onclick="viewObraSocial(${row.id})" title="Ver">
                             <i class="bx bx-show"></i>
@@ -96,10 +96,10 @@ function toggleImageInput() {
 function previewImage(input) {
     const preview = document.getElementById('imagePreview');
     const previewImg = document.getElementById('previewImg');
-    
+
     if (input.files && input.files[0]) {
         const file = input.files[0];
-        
+
         // Validar tamaño (2MB)
         if (file.size > 2 * 1024 * 1024) {
             alert('El archivo es muy grande. Máximo 2MB permitido.');
@@ -107,7 +107,7 @@ function previewImage(input) {
             preview.style.display = 'none';
             return;
         }
-        
+
         // Validar tipo
         if (!file.type.match('image.*')) {
             alert('Por favor selecciona una imagen válida.');
@@ -115,9 +115,9 @@ function previewImage(input) {
             preview.style.display = 'none';
             return;
         }
-        
+
         const reader = new FileReader();
-        reader.onload = function(e) {
+        reader.onload = function (e) {
             previewImg.src = e.target.result;
             preview.style.display = 'block';
         };
@@ -158,9 +158,9 @@ function openCreateModal() {
 function viewObraSocial(id) {
     const obraSocial = obrasSociales.find(os => os.id === id);
     if (!obraSocial) return;
-    
+
     const imagenSrc = obraSocial.imagen || `https://ui-avatars.com/api/?name=${encodeURIComponent(obraSocial.nombre)}&background=random&size=200`;
-    
+
     const content = `
         <div class="row">
             <div class="col-md-4 text-center mb-3">
@@ -180,7 +180,7 @@ function viewObraSocial(id) {
             </div>
         </div>
     `;
-    
+
     document.getElementById('viewModalBody').innerHTML = content;
     new bootstrap.Modal(document.getElementById('viewModal')).show();
 }
@@ -189,14 +189,14 @@ function viewObraSocial(id) {
 function editObraSocial(id) {
     const obraSocial = obrasSociales.find(os => os.id === id);
     if (!obraSocial) return;
-    
+
     document.getElementById('modalTitle').textContent = 'Editar Obra Social';
     document.getElementById('obraSocialId').value = obraSocial.id;
     document.getElementById('nombre').value = obraSocial.nombre;
     document.getElementById('descripcion').value = obraSocial.descripcion;
     document.getElementById('porcentaje').value = obraSocial.porcentaje || 0;
     document.getElementById('activo').checked = obraSocial.activo;
-    
+
     // Cargar imagen si existe
     if (obraSocial.imagen) {
         document.getElementById('previewImg').src = obraSocial.imagen;
@@ -204,11 +204,11 @@ function editObraSocial(id) {
     } else {
         document.getElementById('imagePreview').style.display = 'none';
     }
-    
+
     // Reset tipo de imagen a URL
     document.getElementById('tipoUrl').checked = true;
     toggleImageInput();
-    
+
     new bootstrap.Modal(document.getElementById('obraSocialModal')).show();
 }
 
@@ -219,11 +219,11 @@ async function guardarObraSocial() {
         form.reportValidity();
         return;
     }
-    
+
     // Procesar imagen
     let imagenBase64 = '';
     const tipoUrl = document.getElementById('tipoUrl').checked;
-    
+
     if (tipoUrl) {
         const url = document.getElementById('imagenUrl').value;
         if (url) {
@@ -244,7 +244,7 @@ async function guardarObraSocial() {
             });
         }
     }
-    
+
     const id = document.getElementById('obraSocialId').value;
     const estadoAnterior = id ? obrasSociales.find(os => os.id === parseInt(id))?.activo : true;
     const obraSocialData = {
@@ -254,13 +254,13 @@ async function guardarObraSocial() {
         imagen: imagenBase64,
         activo: document.getElementById('activo').checked
     };
-    
+
     if (id) {
         // Editar
         const index = obrasSociales.findIndex(os => os.id === parseInt(id));
         if (index !== -1) {
             obrasSociales[index] = { ...obrasSociales[index], ...obraSocialData };
-            
+
             // Si se desactivó la obra social, actualizar médicos
             if (estadoAnterior && !obraSocialData.activo) {
                 DataManager.deleteObraSocial(parseInt(id));
@@ -271,16 +271,16 @@ async function guardarObraSocial() {
         const newId = obrasSociales.length > 0 ? Math.max(...obrasSociales.map(os => os.id)) + 1 : 1;
         obrasSociales.push({ id: newId, ...obraSocialData });
     }
-    
+
     // Guardar en localStorage
     guardarDatos();
-    
+
     // Actualizar tabla
     actualizarTabla();
-    
+
     // Cerrar modal
     bootstrap.Modal.getInstance(document.getElementById('obraSocialModal')).hide();
-    
+
     alert('Obra social guardada correctamente');
 }
 
@@ -291,18 +291,18 @@ function deleteObraSocial(id) {
 
     // Verificar si hay médicos usando esta obra social
     const medicos = DataManager.getMedicos();
-    const medicosConObraSocial = medicos.filter(m => 
+    const medicosConObraSocial = medicos.filter(m =>
         m.obrasSociales && m.obrasSociales.includes(id)
     );
-    
+
     if (medicosConObraSocial.length > 0) {
         const mensaje = `Esta obra social está siendo utilizada por ${medicosConObraSocial.length} médico(s).\n\n` +
-                       `¿Desea desactivarla de todos modos?`;
+            `¿Desea desactivarla de todos modos?`;
         if (!confirm(mensaje)) return;
     } else {
         if (!confirm(`¿Está seguro de desactivar "${obraSocial.nombre}"?`)) return;
     }
-    
+
     // Dar de baja (baja lógica)
     const index = obrasSociales.findIndex(os => os.id === id);
     if (index !== -1) {

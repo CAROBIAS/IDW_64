@@ -390,6 +390,8 @@ form button:hover {
 .dashboard {
     flex: 1;
     padding: 40px 0;
+    display: flex;
+    align-items: center;
 }
 
 /* DataTables responsive */
@@ -512,20 +514,16 @@ table.dataTable tbody td {
     width: 100%;
     overflow: hidden;
     position: relative;
-    mask-image: linear-gradient(
-        to right,
-        transparent,
-        black 10%,
-        black 90%,
-        transparent
-    );
-    -webkit-mask-image: linear-gradient(
-        to right,
-        transparent,
-        black 10%,
-        black 90%,
-        transparent
-    );
+    mask-image: linear-gradient(to right,
+            transparent,
+            black 10%,
+            black 90%,
+            transparent);
+    -webkit-mask-image: linear-gradient(to right,
+            transparent,
+            black 10%,
+            black 90%,
+            transparent);
 }
 
 .carousel-track {
@@ -585,6 +583,7 @@ table.dataTable tbody td {
     0% {
         transform: translateX(0);
     }
+
     100% {
         transform: translateX(-50%);
     }
@@ -597,13 +596,46 @@ table.dataTable tbody td {
         height: 50px;
         padding: 6px;
     }
-    
+
     .carousel-track {
         gap: 15px;
     }
-    
+
     .percentage-badge {
         font-size: 9px;
         padding: 2px 5px;
     }
+}
+
+#medicosTable th:last-child,
+#medicosTable td:last-child,
+#obrasSocialesTable th:last-child,
+#obrasSocialesTable td:last-child,
+#especialidadesTable th:last-child,
+#especialidadesTable td:last-child,
+#turnosTable th:last-child,
+#turnosTable td:last-child {
+    white-space: nowrap !important;
+}
+
+/* Hacer que el body use flexbox para empujar el footer abajo */
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex !important;
+    /* !important para sobrescribir el inline style */
+    flex-direction: column;
+}
+
+/* El main debe crecer para ocupar el espacio disponible */
+main {
+    flex: 1;
+}
+
+/* Asegurar que el footer esté al final */
+footer {
+    margin-top: auto;
 }

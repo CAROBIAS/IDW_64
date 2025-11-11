@@ -1,7 +1,7 @@
 // Convierte archivo o URL a Base64
 async function convertirImagenABase64() {
     const usaUrl = document.getElementById("tipoUrl").checked;
-    
+
     // Caso 1: URL de imagen
     if (usaUrl) {
         const url = document.getElementById("imagenUrl").value.trim();
@@ -12,7 +12,7 @@ async function convertirImagenABase64() {
     // Caso 2: Archivo seleccionado
     const archivo = document.getElementById("imagenArchivo").files[0];
     if (!archivo) return "";
-    
+
     return await fileToBase64(archivo);
 }
 

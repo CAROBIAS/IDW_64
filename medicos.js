@@ -348,17 +348,16 @@ function viewMedico(id) {
   const content = `
         <div class="row">
             <div class="col-md-3 text-center mb-3">
-                ${
-                  medico.fotografia
-                    ? `
+                ${medico.fotografia
+      ? `
                     <img src="${medico.fotografia}" alt="Foto del médico" class="img-fluid rounded-circle" style="width: 150px; height: 150px; object-fit: cover; border: 2px solid #ddd;">
                 `
-                    : `
+      : `
                     <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(
-                      medico.nombre + " " + medico.apellido
-                    )}&background=random&size=150" alt="Avatar" class="img-fluid rounded-circle" style="width: 150px; height: 150px;">
+        medico.nombre + " " + medico.apellido
+      )}&background=random&size=150" alt="Avatar" class="img-fluid rounded-circle" style="width: 150px; height: 150px;">
                 `
-                }
+    }
             </div>
             <div class="col-md-9">
                 <h4>${medico.nombre} ${medico.apellido}</h4>
@@ -366,15 +365,14 @@ function viewMedico(id) {
                 <p><strong>Matrícula:</strong> ${medico.matricula}</p>
                 <p><strong>Especialidades:</strong> ${especialidadesTexto}</p>
                 <p><strong>Valor Consulta:</strong> $${parseFloat(
-                  medico.valorConsulta
-                ).toFixed(2)}</p>
+      medico.valorConsulta
+    ).toFixed(2)}</p>
                 <p><strong>Teléfono:</strong> ${medico.telefono}</p>
                 <p><strong>Email:</strong> ${medico.email}</p>
-                <p><strong>Estado:</strong> ${
-                  medico.activo
-                    ? '<span class="badge bg-success">Activo</span>'
-                    : '<span class="badge bg-secondary">Inactivo</span>'
-                }</p>
+                <p><strong>Estado:</strong> ${medico.activo
+      ? '<span class="badge bg-success">Activo</span>'
+      : '<span class="badge bg-secondary">Inactivo</span>'
+    }</p>
             </div>
         </div>
         <div class="row mt-3">
@@ -600,9 +598,9 @@ async function guardarMedico() {
 
   alert(
     "Médico guardado correctamente" +
-      (estaraActivo !== activo
-        ? " (Desactivado por falta de especialidades)"
-        : "")
+    (estaraActivo !== activo
+      ? " (Desactivado por falta de especialidades)"
+      : "")
   );
 }
 

@@ -1,368 +1,240 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Turnos - Centro Médico IDW64</title>
 
-    <!-- Bootstrap CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Turnos - Centro Médico IDW64</title>
 
-    <!-- DataTables CSS -->
-    <link
-      href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css"
-      rel="stylesheet"
-    />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-    <!-- Boxicons -->
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
+  <!-- DataTables CSS -->
+  <link href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css" />
+  <!-- Boxicons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 
-    <!-- Favicon -->
-    <link rel="icon" href="./scr/logo idwsa.png" />
-  </head>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
 
-  <body style="display: none">
-    <!-- Header -->
-    <header class="position-relative min-vh-50">
-      <div class="header-container">
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="index.html"
-              ><img src="scr/logo idwsa.png" alt="logo" style="height: 40px"
-            /></a>
-            <button
-              class="navbar-toggler fw-bold"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarContent"
-              aria-controls="navbarContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
+  <!-- Favicon -->
+  <link rel="icon" href="./src/logo idwsa.png" />
+</head>
 
-            <div class="collapse navbar-collapse" id="navbarContent">
-              <ul class="navbar-nav me-auto mb-2 mb-md-0" id="menuPrincipal">
-                <li class="nav-item">
-                  <a class="nav-link fw-semibold" href="index.html">HOME</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link fw-semibold" href="institucional.html"
-                    >INSTITUCIONAL</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link fw-semibold" href="contacto.html"
-                    >CONTACTO</a
-                  >
-                </li>
-              </ul>
-
-              <ul class="navbar-nav flex-row me-3">
-                <li class="nav-item me-2">
-                  <a
-                    class="nav-link"
-                    href="https://www.facebook.com/"
-                    target="_blank"
-                    ><i class="bx bxl-facebook fw-bold"></i
-                  ></a>
-                </li>
-                <li class="nav-item me-2">
-                  <a
-                    class="nav-link"
-                    href="https://www.instagram.com/"
-                    target="_blank"
-                    ><i class="bx bxl-instagram fw-bold"></i
-                  ></a>
-                </li>
-                <li class="nav-item me-2">
-                  <a
-                    class="nav-link"
-                    href="https://www.linkedin.com/"
-                    target="_blank"
-                    ><i class="bx bxl-linkedin fw-bold"></i
-                  ></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="" target="_blank"
-                    ><i class="bx bxl-whatsapp fw-bold"></i
-                  ></a>
-                </li>
-              </ul>
-
-              <div class="d-flex me-3" id="loginContainer"></div>
-            </div>
-          </div>
-        </nav>
-      </div>
-    </header>
-
-    <!-- Main -->
-    <main class="container my-5">
-      <div class="row mb-4">
-        <div class="col">
-          <h2 class="mb-3">
-            <i class="bx bx-calendar me-2"></i>Gestión de Turnos
-          </h2>
-          <p class="text-muted">Administra los turnos de los pacientes</p>
-        </div>
-      </div>
-
-      <!-- Control Buttons -->
-      <div class="row mb-3">
-        <div
-          class="col-12 d-flex justify-content-between align-items-center flex-wrap gap-2"
-        >
-          <button
-            class="btn btn-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#turnoModal"
-            onclick="openCreateTurnoModal()"
-          >
-            <i class="bx bx-plus-circle me-1"></i>Nuevo Turno
+<body style="display: none">
+  <!-- Header -->
+  <header class="position-relative min-vh-50">
+    <div class="header-container">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html"><img src="src/logo idwsa.png" alt="logo" style="height: 40px" /></a>
+          <button class="navbar-toggler fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
           </button>
 
-          <div class="form-check form-switch">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="showInactiveToggle"
-              onchange="toggleInactive()"
-            />
-            <label class="form-check-label" for="showInactiveToggle"
-              >Mostrar turnos inactivos</label
-            >
-          </div>
-        </div>
-      </div>
-
-      <!-- DataTable -->
-      <div class="row">
-        <div class="col-12">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <div class="table-responsive">
-                <table id="turnosTable" class="table table-striped table-hover">
-                  <thead>
-                    <tr>
-                      <th>Médico</th>
-                      <th>Especialidad</th>
-                      <th>Fecha</th>
-                      <th>Hora</th>
-                      <th>Estado</th>
-                      <th>Acciones</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <!-- Datos cargados por JavaScript -->
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
-
-    <!-- Modal Turno -->
-    <div class="modal fade" id="turnoModal" tabindex="-1">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="modalTitle">Nuevo Turno</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <form id="turnoForm">
-              <input type="hidden" id="turnoId" />
-
-              <div class="row">
-                <div class="col-md-6 mb-3">
-                  <label for="especialidad" class="form-label"
-                    >Especialidad *</label
-                  >
-                  <select class="form-select" id="especialidad" required>
-                    <option value="">-- Seleccione una especialidad --</option>
-                  </select>
-                </div>
-                <div class="col-md-6 mb-3">
-                  <label for="id_medico" class="form-label">Médico *</label>
-                  <select class="form-select" id="id_medico" required>
-                    <option value="">
-                      -- Primero seleccione una especialidad --
-                    </option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-6 mb-3">
-                  <label for="fecha" class="form-label">Fecha *</label>
-                  <input type="date" class="form-control" id="fecha" required />
-                </div>
-                <div class="col-md-6 mb-3">
-                  <label for="hora" class="form-label">Hora *</label>
-                  <input type="time" class="form-control" id="hora" required />
-                </div>
-              </div>
-
-              <div class="form-check mb-3">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="disponible"
-                  checked
-                />
-                <label class="form-check-label" for="disponible"
-                  >Turno activo</label
-                >
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Cancelar
-            </button>
-            <button
-              type="button"
-              class="btn btn-primary"
-              onclick="guardarTurno()"
-            >
-              Guardar
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal para ver detalles -->
-    <div class="modal fade" id="viewModal" tabindex="-1">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Detalles del Turno</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-            ></button>
-          </div>
-          <div class="modal-body" id="viewModalBody">
-            <!-- Contenido cargado dinamicamente -->
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Cerrar
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-      <!-- 👇 igual que el de medicos.html -->
-      <div class="container">
-        <div class="row mb-3 footer-top-bar">
-          <div class="col-12 text-center">
-            <div class="social-links mt-1">
-              <ul class="list-inline mb-0">
-                <li class="list-inline-item">
-                  <a href="https://www.facebook.com/" target="_blank"
-                    ><i class="bx bxl-facebook fs-3"></i
-                  ></a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="https://www.instagram.com/" target="_blank"
-                    ><i class="bx bxl-instagram fs-3"></i
-                  ></a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="https://www.linkedin.com/" target="_blank"
-                    ><i class="bx bxl-linkedin fs-3"></i
-                  ></a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="" target="_blank"
-                    ><i class="bx bxl-whatsapp fs-3"></i
-                  ></a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="row mb-3 justify-content-between align-items-center">
-          <div class="col-lg-4 d-none d-lg-block text-center p-3">
-            <div class="logo">
-              <a href="index.html">
-                <img src="scr/logo idwsa.png" alt="logo" class="img-fluid" />
-              </a>
-            </div>
-          </div>
-          <div class="col-12 col-lg-6 text-center text-lg-start p-3">
-            <ul class="list-unstyled mb-0">
-              <li>
-                <i class="bx bxs-map"></i> Av. Libertador 1234, Buenos Aires,
-                Argentina
+          <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0" id="menuPrincipal">
+              <li class="nav-item">
+                <a class="nav-link fw-semibold" href="index.html">HOME</a>
               </li>
-              <li><i class="bx bxs-phone"></i> +54 11 1234 5678</li>
-              <li>
-                <i class="bx bxs-envelope"></i> contacto@empresaejemplo.com
+              <li class="nav-item">
+                <a class="nav-link fw-semibold" href="institucional.html">INSTITUCIONAL</a>
               </li>
-              <li>
-                <i class="bx bxs-time"></i> Lunes a Viernes: 9:00 - 18:00 |
-                Sábado: 10:00 - 14:00
+              <li class="nav-item">
+                <a class="nav-link fw-semibold" href="contacto.html">CONTACTO</a>
               </li>
-              <li><i class="bx bxl-whatsapp"></i> +54 9 11 9876 5432</li>
             </ul>
+
+            <ul class="navbar-nav flex-row me-3">
+              <li class="nav-item me-2">
+                <a class="nav-link" href="https://www.facebook.com/" target="_blank"><i
+                    class="bx bxl-facebook fw-bold"></i></a>
+              </li>
+              <li class="nav-item me-2">
+                <a class="nav-link" href="https://www.instagram.com/" target="_blank"><i
+                    class="bx bxl-instagram fw-bold"></i></a>
+              </li>
+              <li class="nav-item me-2">
+                <a class="nav-link" href="https://www.linkedin.com/" target="_blank"><i
+                    class="bx bxl-linkedin fw-bold"></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://www.whatsapp.com/?lang=es/" target="_blank"><i
+                    class="bx bxl-whatsapp fw-bold"></i></a>
+              </li>
+            </ul>
+
+            <div class="d-flex me-3" id="loginContainer"></div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-12 text-center mt-3">
-            <p class="mb-0">
-              &copy; 2025 Centro Médico. Todos los derechos reservados.
-            </p>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="container my-5">
+    <div class="row mb-4">
+      <div class="col">
+        <h2 class="mb-3">
+          <i class="bx bx-calendar me-2"></i>Gestión de Turnos
+        </h2>
+        <p class="text-muted">Administra los turnos de los pacientes</p>
+      </div>
+    </div>
+
+    <!-- Control Buttons -->
+    <div class="row mb-3">
+      <div class="col-12 d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#turnoModal"
+          onclick="openCreateTurnoModal()">
+          <i class="bx bx-plus-circle me-1"></i>Nuevo Turno
+        </button>
+
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="showInactiveToggle" onchange="toggleInactive()" />
+          <label class="form-check-label" for="showInactiveToggle">Mostrar turnos inactivos</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- DataTable -->
+    <div class="row">
+      <div class="col-12">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table id="turnosTable" class="table table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th>Médico</th>
+                    <th>Especialidad</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Datos cargados por JavaScript -->
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
-    </footer>
+    </div>
+  </main>
 
-    <!-- jQuery (requirido para DataTables) -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <!-- Modal Turno -->
+  <div class="modal fade" id="turnoModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTitle">Nuevo Turno</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="turnoForm">
+            <input type="hidden" id="turnoId" />
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="especialidad" class="form-label">Especialidad *</label>
+                <select class="form-select" id="especialidad" required>
+                  <option value="">-- Seleccione una especialidad --</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="id_medico" class="form-label">Médico *</label>
+                <select class="form-select" id="id_medico" required>
+                  <option value="">
+                    -- Primero seleccione una especialidad --
+                  </option>
+                </select>
+              </div>
+            </div>
 
-    <!-- DataTables JS -->
-    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="fecha" class="form-label">Fecha *</label>
+                <input type="date" class="form-control" id="fecha" required />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="hora" class="form-label">Hora *</label>
+                <input type="time" class="form-control" id="hora" required />
+              </div>
+            </div>
 
-    <!-- Script -->
-    <script src="dataManager.js"></script>
-    <script src="admin.js"></script>
-    <script src="turnos.js"></script>
-    <script src="menu.js"></script>
-  </body>
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" id="disponible" checked />
+              <label class="form-check-label" for="disponible">Turno activo</label>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Cancelar
+          </button>
+          <button type="button" class="btn btn-primary" onclick="guardarTurno()">
+            Guardar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para ver detalles -->
+  <div class="modal fade" id="viewModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Detalles del Turno</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body" id="viewModalBody">
+          <!-- Contenido cargado dinamicamente -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Cerrar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    
+    <div class="container">
+      
+      <div class="row">
+        <div class="col-12 text-center mt-3">
+          <p class="mb-0">
+            &copy; 2025 Centro Médico. Todos los derechos reservados.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- jQuery (requirido para DataTables) -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- DataTables JS -->
+  <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+
+  <!-- Script -->
+  <script src="dataManager.js"></script>
+  <script src="admin.js"></script>
+  <script src="turnos.js"></script>
+  <script src="menu.js"></script>
+</body>
+
 </html>
