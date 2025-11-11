@@ -17,11 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const contenedor = document.getElementById('tarjetas-container');
     contenedor.innerHTML = '';
- 
+
     medicos.filter(m => m.activo).forEach((medico, index) => {
         const especialidad = especialidades.find(e => e.id === medico.especialidades[0]);
         const nombreEspecialidad = especialidad ? especialidad.nombre : 'Sin especialidad';
-        
+
         const tarjeta = document.createElement('article');
         tarjeta.className = 'col-12 col-md-6 col-lg-4 p-3 mt-4';
         tarjeta.innerHTML = `
@@ -41,9 +41,9 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
         contenedor.appendChild(tarjeta);
     });
- 
+
     crearModales();
- 
+
     document.querySelectorAll('.btn-detalle').forEach(btn => {
         btn.addEventListener('click', (e) => {
             const medicoId = parseInt(e.target.getAttribute('data-medico-id'));
@@ -150,16 +150,16 @@ function mostrarModal(medico, especialidades, obras_sociales) {
 
     const especialidad = especialidades.find(e => Number(e.id) === Number(medico.especialidades[0]));
     const nombreEspecialidad = especialidad ? especialidad.nombre : 'Sin especialidad';
-    
+
     const imagenMedico = medico.fotografia || 'https://via.placeholder.com/150?text=Sin+Imagen';
-    
+
     let obrasSocialesInfo = '';
     if (medico.obrasSociales && medico.obrasSociales.length > 0) {
         obrasSocialesInfo = '<div class="mt-3"><strong>Obras Sociales:</strong><div class="row mt-2">';
-        
+
         medico.obrasSociales.forEach(osId => {
             const obraSocial = obras_sociales.find(os => os.id == osId);
-            
+
             if (obraSocial) {
                 const imagenOS = obraSocial.imagen || 'https://via.placeholder.com/40?text=OS';
                 obrasSocialesInfo += `
@@ -175,12 +175,12 @@ function mostrarModal(medico, especialidades, obras_sociales) {
                 `;
             }
         });
-        
+
         obrasSocialesInfo += '</div></div>';
     } else {
         obrasSocialesInfo = '<p class="mt-3"><strong>Obras Sociales:</strong> No acepta obras sociales</p>';
     }
-    
+
     const modalBody = document.getElementById('modalMedicoBody');
     modalBody.innerHTML = `
         <div class="text-center mb-3">
