@@ -53,12 +53,12 @@ function renderTarjetas(medicos, especialidades, obras) {
             const tarjeta = document.createElement('article');
             tarjeta.className = 'col-12 col-md-6 col-lg-4 p-3 mt-4';
             tarjeta.innerHTML = `
-                <div class="row g-0 border border-2 border-secondary rounded-4 p-2"> 
+                <div class="row g-0 border border-2 border-secondary rounded-4 p-2 medico-card">
                     <div class="col-md-4">
                         <img src="${medico.fotografia}" alt="${medico.nombre} ${medico.apellido}" class="img-fluid rounded-pill">
                     </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
+                    <div class="d-flex flex-column justify-content-center align-items-center col-md-8">
+                        <div class="d-flex flex-column justify-content-center align-items-center card-body">
                             <h5 class="card-title">${medico.nombre} ${medico.apellido}</h5>
                             <p class="card-text">${nombreEspecialidad}</p>
                             <p class="card-text"><small class="text-body-secondary">MD ${medico.matricula}</small></p>
@@ -239,7 +239,8 @@ function mostrarModal(medico, especialidades, obras_sociales) {
         <h5 class="text-center">${medico.nombre} ${medico.apellido}</h5>
         <hr>
         <p><strong>Especialidad:</strong> ${nombreEspecialidad}</p>
-        <p><strong>Matrícula:</strong> ${medico.matricula}</p>        
+        <p><strong>Matrícula:</strong> ${medico.matricula}</p>
+        <p><strong>Valor Consulta:</strong> $${medico.valorConsulta}</p>         
         ${medico.biografia ? `<p><strong>Biografía:</strong><br>${medico.biografia}</p>` : ''}
         ${obrasSocialesInfo}
     `;

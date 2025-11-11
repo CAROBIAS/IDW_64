@@ -639,3 +639,26 @@ main {
 footer {
     margin-top: auto;
 }
+
+/*--------------------------------------------------------------*/
+
+/* Toda la tarjeta escala junto */
+.medico-card {
+    font-size: clamp(0.9rem, 1vw, 1.4rem);
+}
+
+/* Hacer que el título escale */
+.medico-card .card-title {
+    font-size: 1.2em;  /* Escala según font-size de la tarjeta */
+}
+
+/* Texto normal */
+.medico-card .card-text {
+    font-size: 1em;
+}
+
+/* Botón escalable igual que el resto */
+.medico-card button {
+    font-size: 0.9em;
+    padding: 0.4em 1.2em; /* Los em escalan con la tarjeta */
+}
