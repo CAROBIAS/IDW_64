@@ -1,46 +1,11 @@
-// function login() {
-//   const usuarioIngresado = document.getElementById("usuario").value;
-//   const passIngresado = document.getElementById("password").value;
-
-//   const usuarioValido = USUARIOS.find(u => 
-//     u.usuario === usuarioIngresado && u.pass === passIngresado
-//   );
-
-//   if (usuarioValido) {
-//     sessionStorage.setItem("usuarioActual", usuarioValido.usuario);
-//     sessionStorage.setItem("tipoUsuario", usuarioValido.tipo);
-//     alert("Inicio de sesión exitoso");
-
-//     if (usuarioValido.tipo === "admin") {
-//       window.location.href = "admin.html";
-//     } else {
-//       window.location.href = "index.html"; 
-//     }
-
-//   } else {
-//     alert("Usuario o contraseña incorrectos");
-//   }
-// }
-
-
-
-// function verificarSesion() {
-//   const usuarioActivo = sessionStorage.getItem("usuarioActual");
-//   const tipo = sessionStorage.getItem("tipoUsuario");
-
-//   if (usuarioActivo !== "admin" || tipo !== "admin") {
-//     alert("Acceso denegado. Solo los administradores pueden ingresar.");
-//     window.location.href = "index.html";
-//   }
-// }
-
-
-// function logout() {
-//   sessionStorage.removeItem("usuarioActual");
-//   sessionStorage.removeItem("tipoUsuario");
-//   alert("Sesión cerrada");
-//   window.location.href = "index.html";
-// }
+// Generar token simple (simulación de JWT)
+function generarToken() {
+  return (
+    "token_" +
+    Math.random().toString(36).substring(2) +
+    Date.now().toString(36)
+  );
+}
 
 // Cargar usuarios desde la API
 async function obtenerUsuariosAPI() {
@@ -54,7 +19,6 @@ async function obtenerUsuariosAPI() {
   }
 }
 
-
 // FUNCIÓN PRINCIPAL DE LOGIN
 async function login() {
   const usuarioIngresado = document.getElementById("usuario").value.trim();
@@ -66,8 +30,12 @@ async function login() {
   );
 
   if (usuarioLocal) {
+    const token = generarToken(); // ← nuevo token
+
+    sessionStorage.setItem("token", token);
     sessionStorage.setItem("usuarioActual", usuarioLocal.usuario);
     sessionStorage.setItem("tipoUsuario", usuarioLocal.tipo);
+
     alert("Inicio de sesión exitoso (usuario local)");
     window.location.href = usuarioLocal.tipo === "admin" ? "admin.html" : "index.html";
     return;
@@ -81,9 +49,10 @@ async function login() {
   );
 
   if (usuarioAPI) {
-    // La API usa "role"
     const rol = usuarioAPI.role ?? "user";
+    const token = generarToken(); // ← nuevo token
 
+    sessionStorage.setItem("token", token);
     sessionStorage.setItem("usuarioActual", usuarioAPI.username);
     sessionStorage.setItem("tipoUsuario", rol);
 
@@ -96,11 +65,17 @@ async function login() {
   alert("Usuario o contraseña incorrectos");
 }
 
-
-
 // VERIFICAR SI EL USUARIO PUEDE ENTRAR A ADMIN
 function verificarSesion() {
   const tipo = sessionStorage.getItem("tipoUsuario");
+  const token = sessionStorage.getItem("token");
+
+  // Nuevo: si no hay token → bloquear
+  if (!token) {
+    alert("Sesión inválida. Inicie sesión nuevamente.");
+    window.location.href = "index.html";
+    return;
+  }
 
   if (tipo !== "admin") {
     alert("Acceso denegado. Solo administradores pueden ingresar.");
@@ -108,12 +83,12 @@ function verificarSesion() {
   }
 }
 
-
-
 // CERRAR SESIÓN
 function logout() {
+  sessionStorage.removeItem("token");       // ← nuevo
   sessionStorage.removeItem("usuarioActual");
   sessionStorage.removeItem("tipoUsuario");
+
   alert("Sesión cerrada");
   window.location.href = "index.html";
 }
